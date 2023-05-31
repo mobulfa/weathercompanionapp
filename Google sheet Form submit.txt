@@ -1,0 +1,36 @@
+Deployment ID
+AKfycbwyDWt07TNqQ6Z1Tx4YmFHPRustQKOP7GMTQyJ8lBuk15GhNnZLzfK3FXYqcmKFtGvb
+
+
+Deployment URL
+https://script.google.com/macros/s/AKfycbwyDWt07TNqQ6Z1Tx4YmFHPRustQKOP7GMTQyJ8lBuk15GhNnZLzfK3FXYqcmKFtGvb/exec
+
+
+Prevent Default
+window.addEventListener("load", function() {
+  const form = document.getElementById('my-form');
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const data = new FormData(form);
+    const action = e.target.action;
+    fetch(action, {
+      method: 'POST',
+      body: data,
+    })
+    .then(() => {
+      alert("Thank You for Your Feedback");
+    })
+  });
+});
+
+
+Google Sheet Form
+https://docs.google.com/spreadsheets/d/142SuOxPZ2vIdkhjAWKt4fdzmYvG9G4uVjCKqKkUzfTI/edit#gid=0
+
+
+Google Maps Embeded
+Evac Centers
+<div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Evacuation Center Philippines&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://capcuttemplate.org/">Capcuttemplate.org</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
+
+Tourist Spots
+<div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=350&amp;height=279&amp;hl=en&amp;q=Tourist spots philippines&amp;t=&amp;z=5&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://capcuttemplate.org/">Capcuttemplate.org</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:279px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:279px;}.gmap_iframe {height:279px!important;}</style></div>
