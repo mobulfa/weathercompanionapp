@@ -108,10 +108,6 @@ background-color: #4280DC !important ;
     display: flex;
     justify-content: center;
     align-items: start;
-
-   
-
- 
 }
 
 #currentWeather{
@@ -125,10 +121,8 @@ background-color: #4280DC !important ;
 }
 
 #currenDetails{
-    border: 1px solid orange;
-    margin-top: 50px;
-
- 
+    /* border: 1px solid orange; */
+    margin-top: 15px;
 }
 #currenDetails div{
 border-bottom: 1px solid gray;
