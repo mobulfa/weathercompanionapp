@@ -60,6 +60,12 @@ const currentWeather = async (datacurrent) => {
                 if(iconW === "Cloudy"){
                     img.setAttribute('src', './images/clouds2.png'); 
                 }
+                if(iconW === "Rain shower"){
+                    img.setAttribute('src', './images/Rainy.png')
+                }
+                if(iconW === "Thunderstorm"){
+                    img.setAttribute('src', './images/thunder.png')
+                }
 
                 const tempC = data.Temperature.Metric.Value;
                 //const celciusMin = ((minTemp - 32) * 5 / 9);
