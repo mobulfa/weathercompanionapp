@@ -96,13 +96,14 @@ background-color: #4280DC !important ;
     /* justify-content: center; */
     align-items: start;
     width: 50%;
+   
 }
 #page-2{
     display: flex;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 60%;
+    width: 50%;
 }
 
 #page-3{
@@ -118,6 +119,9 @@ background-color: #4280DC !important ;
         background: #ffffff;
         border-radius: 10px;
         margin-bottom: 10px;
+}
+#hotlines {
+    height: 800px;
 }
 #hotlines h4{
     text-align: center;
