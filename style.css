@@ -71,22 +71,53 @@ background-color: #4280DC !important ;
 }
 
 .main-content{
+
+    box-sizing: border-box;
+   
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+   /* flex-direction: row; */
+    
   
-    @media (min-width: 300px) {
+    /* @media (min-width: 300px) {
 
         display: grid;
         grid-template-columns: 20% 55% 20% ;    
         padding: 0 30px;
         justify-content: space-around;
     
-    }
+    } */
+}
+#page-1{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+    align-items: start;
+    width: 50%;
+}
+#page-2{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 60%;
+}
+
+#page-3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 40px;
+    
 }
 .container{
       
         background: #ffffff;
         border-radius: 10px;
-       
-
+        margin-bottom: 10px;
 }
 #hotlines h4{
     text-align: center;
@@ -108,21 +139,28 @@ background-color: #4280DC !important ;
     display: flex;
     justify-content: center;
     align-items: start;
+    border: 1px solid orange;
 }
 
 #currentWeather{
-    margin: 20px;
-    font-weight: 300;
     
+    font-weight: 300;
+    padding: 10px;
+    margin: 20px; 
 
 }
 #currentWeather img{
     width: 100px; 
 }
-
+#currentWeatherNight{
+    margin: 20px;
+    border: 1px solid orange;
+    
+}
 #currenDetails{
     /* border: 1px solid orange; */
-    margin-top: 15px;
+    margin-top: 20px;
+    padding: 10px;
 }
 #currenDetails div{
 border-bottom: 1px solid gray;
@@ -133,7 +171,9 @@ align-items: center;
 justify-content: space-between;
 }
 
-
+#dayForcast{
+    border: 1px solid orange;
+}
 #aboutPageContainer{
     margin-top: 20px;
     padding: 0;
@@ -160,18 +200,47 @@ justify-content: space-between;
     margin-top: 20px;
 }
 
-
 .footer-div {
     background-color: #4280DC !important;
     height: 50px !important;
     outline: none !important;
     display: flex;
     justify-content: flex-end;
-    align-items: center;    
+    align-items: center;   
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%; 
 }
 .footer-div i{
     margin-right: 20px;
     color: #ffffff;
+}
+#currentWeatherCards{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    
+}
+.card {
+    width: 200px;
+    height: 250px;
+    border: 1px solid rgb(15, 15, 15);
+    position: relative;
+    overflow: hidden;
+    margin: 15px;
+    align-items: center;
+    
+
+  }
+  #imageCard{
+    width: 80px;
+  }
+  #currentTempCard{    
+    font-weight: 300;
+    padding: 10px;
+    margin: 20px;
+    font-size: 20px;
 }
 
 

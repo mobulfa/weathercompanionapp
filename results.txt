@@ -145,6 +145,191 @@ Current
         "Link": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/current-weather/2-262933_1_al?lang=en-us"
     }
 ]
+
+5day forecast
+{
+    "Headline": {
+        "EffectiveDate": "2023-06-03T13:00:00+08:00",
+        "EffectiveEpochDate": 1685768400,
+        "Severity": 5,
+        "Text": "A thunderstorm Saturday afternoon",
+        "Category": "thunderstorm",
+        "EndDate": "2023-06-03T19:00:00+08:00",
+        "EndEpochDate": 1685790000,
+        "MobileLink": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?lang=en-us",
+        "Link": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?lang=en-us"
+    },
+    "DailyForecasts": [
+        {
+            "Date": "2023-06-02T07:00:00+08:00",
+            "EpochDate": 1685660400,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 77.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 97.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 15,
+                "IconPhrase": "Thunderstorms",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Night": {
+                "Icon": 36,
+                "IconPhrase": "Intermittent clouds",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=1&lang=en-us",
+            "Link": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=1&lang=en-us"
+        },
+        {
+            "Date": "2023-06-03T07:00:00+08:00",
+            "EpochDate": 1685746800,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 77.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 91.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 15,
+                "IconPhrase": "Thunderstorms",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Moderate"
+            },
+            "Night": {
+                "Icon": 35,
+                "IconPhrase": "Partly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=2&lang=en-us",
+            "Link": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=2&lang=en-us"
+        },
+        {
+            "Date": "2023-06-04T07:00:00+08:00",
+            "EpochDate": 1685833200,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 76.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 89.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 7,
+                "IconPhrase": "Cloudy",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Moderate"
+            },
+            "Night": {
+                "Icon": 35,
+                "IconPhrase": "Partly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=3&lang=en-us",
+            "Link": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=3&lang=en-us"
+        },
+        {
+            "Date": "2023-06-05T07:00:00+08:00",
+            "EpochDate": 1685919600,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 77.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 90.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 16,
+                "IconPhrase": "Mostly cloudy w/ t-storms",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Moderate"
+            },
+            "Night": {
+                "Icon": 35,
+                "IconPhrase": "Partly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=4&lang=en-us",
+            "Link": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=4&lang=en-us"
+        },
+        {
+            "Date": "2023-06-06T07:00:00+08:00",
+            "EpochDate": 1686006000,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 76.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 91.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 7,
+                "IconPhrase": "Cloudy",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Heavy"
+            },
+            "Night": {
+                "Icon": 38,
+                "IconPhrase": "Mostly cloudy",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Moderate"
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=5&lang=en-us",
+            "Link": "http://www.accuweather.com/en/ph/digos-city/2-262933_1_al/daily-weather-forecast/2-262933_1_al?day=5&lang=en-us"
+        }
+    ]
+}
+
 OPEN WEATHER MAP
 
 //apiKey = aaccc15d568a3ab30a2c314074d41d18

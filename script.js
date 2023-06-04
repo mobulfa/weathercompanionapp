@@ -23,13 +23,13 @@ form.addEventListener('submit', async function(e) {
     const config = {params: {q: searchTerm, apikey: apiKey}, headers:{}};
     const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?`, config);
     
-    currentWeather(res.data);
+    checkCity(res.data);
 
     
     form.elements.q.value = '';		
 })
 
-const currentWeather = async (data) => {
+const checkCity = async (data) => {
     for(let current of data){
         console.log(current);
  
@@ -43,14 +43,12 @@ const currentWeather = async (data) => {
            
                 const checkCurrent = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?`, config2);
                 // console.log(checkCurrent).data;
-                dailyWeather(checkCurrent.data);
-                
-   
+                currentWeather(checkCurrent.data);
         }
       }
 }
 
-const dailyWeather = async (datacurrent) => {
+const currentWeather = async (datacurrent) => {
             const img = document.getElementById('wIcon');
             const currentTemp = document.getElementById('currentTemp');
             const status = document.getElementById('status');
@@ -70,94 +68,9 @@ const dailyWeather = async (datacurrent) => {
                 console.log(data);
                 status.textContent = data.WeatherText;  
                 // console.log(iconW);
-            }
-
-         
-                
-               
-
-             
+            }          
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-// async function checkWeather() {
-//     const response = await axios.get(apiUrl + `${searchCity}`  + `&apikey=${apiKey}`);
-//     var data = response.json();
-
-//     document.getElementById('localizedName').innerHTML = data.LocalizedName;
- 
-
- 
-//     // document.getElementById('countryID').innerHTML = data.Country.ID;
-
-//    console.log(data);
-// }
-
-// checkWeather();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const dailyForcast = async () => {
+        
+}
