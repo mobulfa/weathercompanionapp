@@ -136,6 +136,10 @@ const dailyForcast = async (data) => {
             if(iconWday === "Thunderstorms"){
               imgDay.setAttribute('src', './images/thunder.png')
             }
+            if(iconWday === "Showers"){
+                imgDay.setAttribute('src', './images/rain.png')
+              }
+    
             
   
             dayTemp.textContent = Math.round(celciusMin) 
@@ -154,13 +158,13 @@ const dailyForcast = async (data) => {
             if(iconWnight === "Thunderstorms"){
               imgNight.setAttribute('src', './images/thunder.png')
             }
+            if(iconWnight === "Showers"){
+                imgNight.setAttribute('src', './images/Rainy.png')
+              }
             
             statusDay.textContent = days.Day.IconPhrase;
             statusNight.textContent = days.Night.IconPhrase;
           }
 
-    }
-
-
-   
+    }   
 }
