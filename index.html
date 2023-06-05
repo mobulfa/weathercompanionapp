@@ -52,7 +52,7 @@
 
       <div class="" id="page-1">
         <div class="container " id = "hotlines">
-          <h4>List of Hotlines</h4>
+          <h4 style="margin-top: 15px;">List of Hotlines</h4>
           <div class="container" id="ndrrmc">
             
             <p style="text-align: center;">National Disaster Risk Reduction Management Council</p>
@@ -111,7 +111,7 @@
                 <div class="container" id="currentWeather">
                   <h5>Current Weather</h5>
                   <p id="currentTime">9:24 AM</p>
-                  <h3 id="localizedName">Digos, <span id="countryID">PH</span></h3>
+                  <h3 id="localizedName">Digos, <span id="countryCode">PH</span></h3>
                   <img src="images/clouds.png" alt="" id="wIcon">
                   <span id="currentTemp">30</span><span>°C</span>
                   <p>Status: <span id="status">Clear Sky</span></p>
@@ -125,16 +125,20 @@
                   <div>Wind Gust <span>14 km/h</span></div>
                 </div>    
               </div>
-              <div class="container" id="currentWeatherNight">
-                <h5>Current Weather</h5>
-                <p id="currentTime">9:24 AM</p>
-                <h3 id="localizedName">Digos, <span id="countryID">PH</span></h3>
-                <img src="images/clouds.png" alt="" id="wIcon">
-                <span id="currentTemp">30</span><span>°C</span>
-                <p>Status: <span id="status">Clear Sky</span></p>
+              <div class="container" id="currentWeatherDay" style="padding:10px">
+                <h6>Today's Weather</h5>
+                <img src="images/clouds.png" alt="" id="wIconday" style="width:100px;">
+                <span id="dayTemp">30</span><span>°C</span>
+                <p>Status: <span id="statusDay">Clear Sky</span></p>
+              </div>
+              <div class="container" id="currentWeatherNight" style="padding:10px">
+                <h6>Tonight's Weather</h5>              
+                <img src="images/clouds.png" alt="" id="wIconnight" style="width:100px;">
+                <span id="nightTemp">30</span><span>°C</span>
+                <p>Status: <span id="statusNight">Clear Sky</span></p>
               </div>
 
-              <div class="container" id="dayForcast">
+              <!-- <div class="container" id="dayForcast">
                 <h5 style="margin-top: 10px;">5 day Forecast</h5>
                 <div class="container" id="currentWeatherCards">
                     
@@ -160,7 +164,7 @@
                   </div>
                 </div>
                   
-              </div>
+              </div> -->
    
           </div>
         

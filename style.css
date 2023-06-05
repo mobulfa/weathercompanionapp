@@ -73,21 +73,15 @@ background-color: #4280DC !important ;
 .main-content{
 
     box-sizing: border-box;
-   
     display: flex;
+    padding: 20px;
+    /* flex-wrap: wrap; */
     /* justify-content: center;
     align-items: center; */
    /* flex-direction: row; */
-    
-  
-    /* @media (min-width: 300px) {
-
-        display: grid;
-        grid-template-columns: 20% 55% 20% ;    
-        padding: 0 30px;
-        justify-content: space-around;
-    
-    } */
+    @media (max-width: 300px) {   
+        flex-wrap: wrap;
+     }
 }
 #page-1{
     display: flex;
@@ -95,7 +89,7 @@ background-color: #4280DC !important ;
     flex-wrap: wrap;
     /* justify-content: center; */
     align-items: start;
-    width: 50%;
+    width:40%;
    
 }
 #page-2{
@@ -103,7 +97,8 @@ background-color: #4280DC !important ;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    width: 50%;
+    width: 60%;
+    margin-left: 20px;
 }
 
 #page-3{
@@ -111,17 +106,19 @@ background-color: #4280DC !important ;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    margin-left: 40px;
+    margin-left: 20px;
+    width: 40%;
     
 }
 .container{
       
-        background: #ffffff;
+        background: #ffff;
         border-radius: 10px;
         margin-bottom: 10px;
 }
 #hotlines {
     height: 800px;
+    border: 1px solid orange;
 }
 #hotlines h4{
     text-align: center;
@@ -156,8 +153,11 @@ background-color: #4280DC !important ;
 #currentWeather img{
     width: 100px; 
 }
+/* #currentWeatherDay{
+
+} */
 #currentWeatherNight{
-    margin: 20px;
+ 
     border: 1px solid orange;
     
 }
