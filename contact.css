@@ -73,7 +73,7 @@ nav ul li a{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: url(bg.jpg);
+    background: url(./images/bg.jpg);
     background-size: cover;
 }
 
