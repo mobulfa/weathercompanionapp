@@ -9,7 +9,7 @@ const currentTimeT = () => {
 currentTimeT();
 
 const apiKey = "r1mSiqCerHW8c04GI5X5UU85oFTHz792";
-const apiUrl = "http://dataservice.accuweather.com/locations/v1/cities/search?q=";
+const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
 const apiUrlgeoPosition = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
 
 
@@ -26,7 +26,7 @@ form.addEventListener('submit', async function(e) {
 	e.preventDefault();
 	 const searchTerm = form.elements.q.value;
     const config = {params: {q: searchTerm, apikey: apiKey}, headers:{}};
-    const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?`, config);
+    const res = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?`, config);
 
     checkCity(res.data);
 
@@ -50,7 +50,7 @@ const checkCity = async (data) => {
 
         if(current.Key){
            
-                const checkCurrent = await axios.get(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}?`, config2);
+                const checkCurrent = await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?`, config2);
                 // console.log(checkCurrent).data;
                 currentWeather(checkCurrent.data);
         }
@@ -99,7 +99,7 @@ const dailyForcast = async (data) => {
 
          
         const locationKey = datas.Key;
-        const checkday = await axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${locationKey}?`, config2);
+        const checkday = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${locationKey}?`, config2);
         console.log(checkday.data.DailyForecasts);
           const dayCheck = checkday.data.DailyForecasts;
 
