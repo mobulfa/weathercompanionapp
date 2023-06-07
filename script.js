@@ -10,7 +10,7 @@ currentTimeT();
 
 const apiKey = "r1mSiqCerHW8c04GI5X5UU85oFTHz792";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
-const apiUrlgeoPosition = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
+const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
 
 
 
