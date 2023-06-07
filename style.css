@@ -433,7 +433,7 @@ justify-content: space-between;
     #check:checked ~ ul{
       left: 0;
     } */
-  }
+  
 
 
 @media (max-width: 991px)
@@ -461,6 +461,7 @@ justify-content: space-between;
     
 }
 
+/* END OF CONTACT PAGE */
 
 
 
