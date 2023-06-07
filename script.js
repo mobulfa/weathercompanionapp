@@ -10,6 +10,9 @@ currentTimeT();
 
 const apiKey = "r1mSiqCerHW8c04GI5X5UU85oFTHz792";
 const apiUrl = "http://dataservice.accuweather.com/locations/v1/cities/search?q=";
+const apiUrlgeoPosition = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
+
+
 
 
 const form = document.querySelector('#searchCity');
@@ -25,10 +28,6 @@ form.addEventListener('submit', async function(e) {
     const config = {params: {q: searchTerm, apikey: apiKey}, headers:{}};
     const res = await axios.get(`http://dataservice.accuweather.com/locations/v1/cities/search?`, config);
 
-    
-
-
-    
     checkCity(res.data);
 
     dailyForcast(res.data);

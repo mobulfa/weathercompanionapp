@@ -18,7 +18,8 @@ body {
 }
 .navbar-brand{
     color: #ffffff;
-    padding-left: 50px;
+    /* padding-left: 50px; */
+	margin-left: 50px;
    
 }
 .navbar{

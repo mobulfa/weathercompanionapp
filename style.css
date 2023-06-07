@@ -19,8 +19,8 @@ body {
     color: #ffffff;
 }
 .navbar-brand img{
-    margin-left: 60px;
-    width:20%;
+    margin-left: 80px;
+    width:100px;
 }
 .navbar{
     background-color: #4280DC !important;
@@ -29,8 +29,15 @@ body {
     color: #ffffff;
     margin-top: 10px;
     font-size: 15px;
+    align-items: center;
 }
 
+.nav-link li a{
+    align-items: center;
+}
+.navbar-nav .nav-item {
+    align-items: center;
+}
 .active {
     background-color: #ffffff;
     border-radius: 10px;
