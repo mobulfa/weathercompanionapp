@@ -57,12 +57,37 @@ body {
     border: none;
     
 }
-.btn {
-    background-color: #ffffff;
-    border-radius: 40%;
+.form-control{
+    margin:0;
+
 }
-.btn img {
-    width: 20px;
+.btnicon {
+    background-color: #ed7f0200;
+    width: 50px;
+    border: none;
+    transition: transform .4s;
+}
+.btnicon img {
+    width: 50px;
+  
+}
+.btnicon:hover {
+    transform: scale(1.5);
+   
+}
+.btnlocation{
+    border-radius: 50%;
+    background-color: #ffffff00;
+    outline: none;
+    border: none;
+   
+}
+.btnlocation img {
+    width: 50px;
+    transition: transform .4s;
+}
+.btnlocation img:hover{
+    transform: scale(1.5);
 }
 
 form { 
@@ -123,7 +148,7 @@ background-color: #4280DC !important ;
         margin-bottom: 10px;
 }
 #hotlines {
-    height: 800px;
+    height: 770px;
     border: 1px solid orange;
 }
 #hotlines h4{
@@ -147,6 +172,7 @@ background-color: #4280DC !important ;
     justify-content: center;
     align-items: start;
     border: 1px solid orange;
+
 }
 
 #currentWeather{
@@ -171,6 +197,7 @@ background-color: #4280DC !important ;
     /* border: 1px solid orange; */
     margin-top: 20px;
     padding: 10px;
+    
 }
 #currenDetails div{
 border-bottom: 1px solid gray;
@@ -197,7 +224,7 @@ justify-content: space-between;
    margin-left: 20px;
 }
 #tipsOftheDayContainer{
-    height: 800px;
+    height: 770px;
     font-weight: 300;
     border: 1px solid orange;
     box-shadow: #6e7783;
@@ -260,9 +287,15 @@ justify-content: space-between;
 }
 
 
-/* CONTACT PAGE STYLING */
-
-
+@media(max-width: 900px){
+    #mainContent { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    #main-weather {     flex-wrap: wrap; }
+    /* #page-1
+    #page-2
+    #page-3
+    #tipsOftheDayContainer
+    #hotlines */
+}
 
 
 
