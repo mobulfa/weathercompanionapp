@@ -126,18 +126,33 @@
                   <div>Wind Gust <span>14 km/h</span></div>
                 </div>    
               </div>
-              <div class="container" id="currentWeatherDay" style="padding:10px">
-                <h6>Today's Weather</h5>
-                <img src="images/clouds.png" alt="" id="wIconday" style="width:100px;">
-                <span id="dayTemp">30</span><span>°C</span>
-                <p>Status: <span id="statusDay">Clear Sky</span></p>
+              <div class="container" id="dayweather">
+                <div class="container" id="currentWeatherDay" style="padding:10px">
+                  <h6>Today's Weather</h5>
+                  <img src="images/clouds.png" alt="" id="wIconday" style="width:100px;">
+                  <span id="dayTemp">30</span><span>°C</span>
+                  <p>Status: <span id="statusDay">Clear Sky</span></p>
+                </div>
+                <div class="container" id="dayDetails">
+                    <p>HasPrecipitation: <span id="HasPrecipitation"></span> </p>
+                    <p>PrecipitationType:<span id="PrecipitationType"></span> </p>
+                    <p>PrecipitationIntensity: <span id="PrecipitationIntensity"></span> </p>
+                </div>
               </div>
-              <div class="container" id="currentWeatherNight" style="padding:10px">
-                <h6>Tonight's Weather</h5>              
-                <img src="images/clouds.png" alt="" id="wIconnight" style="width:100px;">
-                <span id="nightTemp">30</span><span>°C</span>
-                <p>Status: <span id="statusNight">Clear Sky</span></p>
+              <div class="container" id="nightweather">
+                <div class="container" id="currentWeatherNight" style="padding:10px">
+                  <h6>Tonight's Weather</h5>              
+                  <img src="images/clouds.png" alt="" id="wIconnight" style="width:100px;">
+                  <span id="nightTemp">30</span><span>°C</span>
+                  <p>Status: <span id="statusNight">Clear Sky</span></p>
+                </div>
+                <!-- <div class="container" id="dayDetails">
+                  <p>HasPrecipitation: </p>
+                  <p>PrecipitationType: </p>
+                  <p>PrecipitationIntensity: </p>
+              </div> -->
               </div>
+
 
               <!-- <div class="container" id="dayForcast">
                 <h5 style="margin-top: 10px;">5 day Forecast</h5>

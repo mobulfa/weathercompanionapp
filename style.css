@@ -96,10 +96,7 @@ form {
     width: 50% !important;
 }
 
-div .footer {
-background-color: #4280DC !important ;
 
-}
 
 .main-content{
 
@@ -175,6 +172,19 @@ background-color: #4280DC !important ;
 
 }
 
+#dayweather{
+    display: flex;
+    flex: wrap;
+}
+#dayDetails{
+margin-left: 0;
+margin-top: 2rem;
+font-size: 12px;
+  
+}
+#dayDetails span{
+    font-weight: 600;
+}
 #currentWeather{
     
     font-weight: 300;
@@ -188,9 +198,10 @@ background-color: #4280DC !important ;
 /* #currentWeatherDay{
 
 } */
-#currentWeatherNight{
- 
-    border: 1px solid orange;
+#nightweather{
+ display: flex;
+ flex: wrap;
+    
     
 }
 #currenDetails{
@@ -253,6 +264,10 @@ justify-content: space-between;
     margin-right: 20px;
     color: #ffffff;
 }
+div .footer {
+    background-color: #4280DC !important ;
+    
+    }
 #currentWeatherCards{
     display: flex;
     justify-content: center;

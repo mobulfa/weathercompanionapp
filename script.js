@@ -52,7 +52,20 @@ const getCurrentLocation = async (data) => {
     currentWeather(checkCurrent.data);
 }
 dailyForcastGeo(data);
+airQualityGeo(data);
 }
+const airQualityGeo = async (data) => {
+    const locationKey = data.Key;
+   const air = await axios.get(`http://dataservice.accuweather.com/indices/v1/daily/1day/${locationKey}/-10?`,config2);
+  //  const airCategory = air.data;
+   //console.log(air);
+  for(let cat of air.data){
+    console.log(cat.Category)
+   const airQuality = document.getElementById('airQuality');
+   airQuality.innerHTML = cat.Category;
+  }
+}
+
 const dailyForcastGeo = async (data) => {
  
 
@@ -101,6 +114,9 @@ const dailyForcastGeo = async (data) => {
           if(iconWday === "Showers"){
               imgDay.setAttribute('src', './images/rain.png')
             }
+            if(iconWday === "Partly Cloudy"){
+              imgDay.setAttribute('src', './images/clouds2.png')
+          }
   
           
 
@@ -110,6 +126,17 @@ const dailyForcastGeo = async (data) => {
 
 
           const iconWnight = days.Night.IconPhrase;
+
+          const HasPrecipitation = days.Day.HasPrecipitation;
+          if(HasPrecipitation == true){
+            document.getElementById('HasPrecipitation').innerHTML = days.Day.HasPrecipitation;
+            document.getElementById('PrecipitationType').innerHTML = days.Day.PrecipitationType;
+            document.getElementById('PrecipitationIntensity').innerHTML = days.Day.PrecipitationIntensity;
+           }else {
+            document.getElementById('HasPrecipitation').innerHTML = days.Day.HasPrecipitation;
+            document.getElementById('PrecipitationType').innerHTML = "none";
+            document.getElementById('PrecipitationIntensity').innerHTML = "none";
+          }
 
           if(iconWnight === "Cloudy"){
             imgNight.setAttribute('src', './images/clouds2.png'); 
@@ -123,6 +150,9 @@ const dailyForcastGeo = async (data) => {
           if(iconWnight === "Showers"){
               imgNight.setAttribute('src', './images/Rainy.png')
             }
+            if(iconWnight === "Partly Cloudy"){
+              imgNight.setAttribute('src', './images/clouds2.png')
+          }
           
           statusDay.textContent = days.Day.IconPhrase;
           statusNight.textContent = days.Night.IconPhrase;
@@ -169,6 +199,7 @@ const checkCity = async (data) => {
                 const checkCurrent = await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?`, config2);
               
                 currentWeather(checkCurrent.data);
+               
         }
       }
 }
@@ -229,7 +260,23 @@ const dailyForcast = async (data) => {
   
             const statusNight = document.getElementById('statusNight');
 
-       
+            const dayDetails = document.getElementById('dayDetails');
+
+            // const pTag = document.createElement('div');
+
+            // const iconWnight = days.Night.IconPhrase;
+            //console.log(days.Day.PrecipitationType);
+                      const HasPrecipitation = days.Day.HasPrecipitation;
+                      if(HasPrecipitation == true){
+                        document.getElementById('HasPrecipitation').innerHTML = days.Day.HasPrecipitation;
+                        document.getElementById('PrecipitationType').innerHTML = days.Day.PrecipitationType;
+                        document.getElementById('PrecipitationIntensity').innerHTML = days.Day.PrecipitationIntensity;
+                       }else {
+                        document.getElementById('HasPrecipitation').innerHTML = days.Day.HasPrecipitation;
+                        document.getElementById('PrecipitationType').innerHTML = "none";
+                        document.getElementById('PrecipitationIntensity').innerHTML = "none";
+                      }
+           
     
             const minTemp = days.Temperature.Minimum.Value;
         
@@ -253,12 +300,16 @@ const dailyForcast = async (data) => {
             if(iconWday === "Showers"){
                 imgDay.setAttribute('src', './images/rain.png')
               }
-    
+              
+              if(iconWday === "Partly Cloudy"){
+                imgDay.setAttribute('src', './images/clouds2.png')
+            }
+
             
   
             dayTemp.textContent = Math.round(celciusMin) 
   
-            nightTemp.textContent = Math.round(celciusMin) 
+            nightTemp.textContent = Math.round(celciusMax) 
   
   
             const iconWnight = days.Night.IconPhrase;
@@ -275,6 +326,9 @@ const dailyForcast = async (data) => {
             if(iconWnight === "Showers"){
                 imgNight.setAttribute('src', './images/Rainy.png')
               }
+              if(iconWnight === "Partly Cloudy"){
+                imgNight.setAttribute('src', './images/clouds2.png')
+            }
             
             statusDay.textContent = days.Day.IconPhrase;
             statusNight.textContent = days.Night.IconPhrase;
