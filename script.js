@@ -12,14 +12,15 @@ const apiKey = "4zuh1IEsKAhyQxWM8SsABGNun90QlQ14";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
 const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
 
-document.body.onload = function (){
-  userLocation();
-};
+
 
 
 // ----------START of Functions for GeoPosition Search
 // const btnLocation = document.getElementById('btnlocation');
 
+// document.body.onload = function (){
+//   userLocation();
+// };
 
 // const userLocation = () => {
 //   if(navigator.geolocation) {
