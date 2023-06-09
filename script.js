@@ -64,6 +64,16 @@ const airQualityGeo = async (data) => {
   for(let cat of air.data){
     console.log(cat.Category)
    const airQuality = document.getElementById('airQuality');
+   const airCategory = cat.Category;
+   if (airCategory === "Good") {
+     airQuality.setAttribute('style','color:blue');
+   }
+   if (airCategory === "Excellent") {
+     airQuality.setAttribute('style','color:green');
+   }
+   if (airCategory === "Poor") {
+     airQuality.setAttribute('style','color:red');
+   }
    airQuality.innerHTML = cat.Category;
   }
 }
