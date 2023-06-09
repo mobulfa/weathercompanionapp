@@ -8,157 +8,262 @@ const currentTimeT = () => {
 }
 currentTimeT();
 
-const apiKey = "r1mSiqCerHW8c04GI5X5UU85oFTHz792";
+const apiKey = "4zuh1IEsKAhyQxWM8SsABGNun90QlQ14";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
 const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
+
+
+
+
+// ----------START of Functions for GeoPosition Search
+const btnLocation = document.getElementById('btnlocation');
 
 document.body.onload = function (){
   userLocation();
 };
 
+const userLocation = () => {
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(currentLocation);
+  } else {
+    showLocation.innerHTML = "Your browser does not support this feature.";
+  }
+}
 
-// ----------START of Functions for GeoPosition Search
-// const btnLocation = document.getElementById('btnlocation');
+const currentLocation = async (lat) => {
+  const currentPositionlat = lat.coords.latitude;
+  const currentPositionlong = lat.coords.longitude;
+  const locationResult = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${currentPositionlat},${currentPositionlong}`, config2);
 
+   getCurrentLocation(locationResult.data);
 
-// const userLocation = () => {
-//   if(navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(currentLocation);
-//   } else {
-//     showLocation.innerHTML = "Your browser does not support this feature.";
-//   }
-// }
+}
 
-// const currentLocation = async (lat) => {
-//   const currentPositionlat = lat.coords.latitude;
-//   const currentPositionlong = lat.coords.longitude;
-//   const locationResult = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${currentPositionlat},${currentPositionlong}`, config2);
+const getCurrentLocation = async (data) => {
+  const localizedName = document.getElementById('localizedName');
+  const cityName = data.ParentCity.LocalizedName;
+  const countryID = data.AdministrativeArea.CountryID;
+  const locationKey = data.Key;
+  localizedName.textContent = data.LocalizedName + ', '+ cityName + ', ' + countryID;
 
-//    getCurrentLocation(locationResult.data);
-
-// }
-
-// const getCurrentLocation = async (data) => {
-//   const localizedName = document.getElementById('localizedName');
-//   const cityName = data.ParentCity.LocalizedName;
-//   const countryID = data.AdministrativeArea.CountryID;
-//   const locationKey = data.Key;
-//   localizedName.textContent = data.LocalizedName + ', '+ cityName + ', ' + countryID;
-
-//   if(data.Key){
+  if(data.Key){
            
-//     const checkCurrent = await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?`, config2);
+    const checkCurrent = await axios.get(`https://dataservice.accuweather.com/currentconditions/v1/${locationKey}?`, config2);
   
-//     currentWeather(checkCurrent.data);
-// }
-// dailyForcastGeo(data);
-// airQualityGeo(data);
-// }
-// const airQualityGeo = async (data) => {
-//     const locationKey = data.Key;
-//    const air = await axios.get(`http://dataservice.accuweather.com/indices/v1/daily/1day/${locationKey}/-10?`,config2);
-//   //  const airCategory = air.data;
-//    //console.log(air);
-//   for(let cat of air.data){
-//     console.log(cat.Category)
-//    const airQuality = document.getElementById('airQuality');
-//    airQuality.innerHTML = cat.Category;
-//   }
-// }
+    currentWeather(checkCurrent.data);
+}
+dailyForcastGeo(data);
+airQualityGeo(data);
 
-// const dailyForcastGeo = async (data) => {
+}
+const airQualityGeo = async (data) => {
+    const locationKey = data.Key;
+   const air = await axios.get(`http://dataservice.accuweather.com/indices/v1/daily/1day/${locationKey}/-10?`,config2);
+  //  const airCategory = air.data;
+   //console.log(air);
+  for(let cat of air.data){
+    console.log(cat.Category)
+   const airQuality = document.getElementById('airQuality');
+   const airCategory = cat.Category;
+   if (airCategory === "Good") {
+     airQuality.setAttribute('style','color:blue');
+   }
+   if (airCategory === "Excellent") {
+     airQuality.setAttribute('style','color:green');
+   }
+   if (airCategory === "Poor") {
+     airQuality.setAttribute('style','color:red');
+   }
+   airQuality.innerHTML = cat.Category;
+  }
+}
+
+const dailyForcastGeo = async (data) => {
  
 
        
-//       const locationKey = data.Key;
-//       const checkday = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${locationKey}?`, config2);
-//    //   console.log(checkday.data.DailyForecasts);
-//         const dayCheck = checkday.data.DailyForecasts;
+      const locationKey = data.Key;
+      const checkday = await axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${locationKey}?`, config2);
+   //   console.log(checkday.data.DailyForecasts);
+        const dayCheck = checkday.data.DailyForecasts;
 
-//         for (let days of dayCheck){
+        for (let days of dayCheck){
 
-//          // console.log(days.Temperature);
+         // console.log(days.Temperature);
 
-//           const dayTemp = document.getElementById('dayTemp');
-//           const nightTemp = document.getElementById('nightTemp');
+          const dayTemp = document.getElementById('dayTemp');
+          const nightTemp = document.getElementById('nightTemp');
         
-//           const imgDay = document.getElementById('wIconday');
+          const imgDay = document.getElementById('wIconday');
         
-//           const imgNight = document.getElementById('wIconnight');
+          const imgNight = document.getElementById('wIconnight');
 
-//           const statusDay = document.getElementById('statusDay');
+          const statusDay = document.getElementById('statusDay');
 
-//           const statusNight = document.getElementById('statusNight');
+          const statusNight = document.getElementById('statusNight');
 
      
   
-//           const minTemp = days.Temperature.Minimum.Value;
-      
-//           const maxTemp = days.Temperature.Maximum.Value;
+          const minTemp = days.Temperature.Minimum.Value;
+ 
+          const maxTemp = days.Temperature.Maximum.Value;
 
-//           const celciusMin = ((minTemp - 32) * 5 / 9);
+          const celciusMin = ((minTemp - 32) * 5 / 9);
 
-//           const celciusMax = ((maxTemp - 32) * 5 / 9);
+          const celciusMax = ((maxTemp - 32) * 5 / 9);
 
-//           const iconWday = days.Day.IconPhrase;
+          const iconWday = days.Day.IconPhrase;
 
-//           if(iconWday === "Cloudy"){
-//             imgDay.setAttribute('src', './images/clouds2.png'); 
-//           }
-//           if(iconWday === "Rain shower"){
-//             imgDay.setAttribute('src', './images/Rainy.png')
-//           }
-//           if(iconWday === "Thunderstorms"){
-//             imgDay.setAttribute('src', './images/thunder.png')
-//           }
-//           if(iconWday === "Showers"){
-//               imgDay.setAttribute('src', './images/rain.png')
-//             }
-//             if(iconWday === "Partly Cloudy"){
-//               imgDay.setAttribute('src', './images/clouds2.png')
-//           }
+          if(iconWday === "Sunny") {
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/01-s.png');
+          }
+          if(iconWday === "Mostly Sunny") {
+            imgDay.setAttribute('src', ' https://developer.accuweather.com/sites/default/files/02-s.png');
+          }
+          if(iconWday === "Partly Sunny") {
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/03-s.png');
+          }
+          if(iconWday === "Intermittent Clouds") {
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/04-s.png');
+          }
+          if(iconWday === "Hazy Sunshine") {
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/05-s.png');
+          }
+          if(iconWday === "Mostly Cloudy") {
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/06-s.png');
+          }
+          if(iconWday === "Cloudy"){
+              imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/07-s.png'); 
+          }
+          if(iconWday === "Dreary (Overcast)"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/08-s.png'); 
+        }
+        if(iconWday === "Dreary (Overcast)"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/08-s.png'); 
+        }
+        if(iconWday === "Fog"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/11-s.png'); 
+        }
+        if(iconWday === "Showers"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/12-s.png'); 
+        }
+        if(iconWday === "Mostly Cloudy w/ Showers"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/13-s.png'); 
+        }
+        if(iconWday === "Partly Sunny w/ Showers"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/14-s.png'); 
+        }
+        if(iconWday === "T-Storms"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/15-s.png'); 
+        }
+        if(iconWday === "Mostly Cloudy w/ T-Storms"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/16-s.png'); 
+        }
+        if(iconWday === "Partly Sunny w/ T-Storms"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/17-s.png'); 
+        }
+        if(iconWday === "Rain"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/18-s.png'); 
+        }
+        if(iconWday === "Flurries"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/19-s.png'); 
+        }
+        if(iconWday === "Mostly Cloudy w/ Flurries"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/20-s.png'); 
+        }
+        if(iconWday === "Partly Sunny w/ Flurries"){
+          imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/21-s.png'); 
+        }
+          if(iconWday === "Rain shower"){
+            imgDay.setAttribute('src', './images/Rainy.png')
+          }
+          if(iconWday === "Thunderstorms"){
+            imgDay.setAttribute('src', './images/thunder.png')
+          }
+          if(iconWday === "Showers"){
+              imgDay.setAttribute('src', './images/rain.png')
+            }
+            
+            if(iconWday === "Partly Cloudy"){
+              imgDay.setAttribute('src', './images/clouds2.png')
+          }
   
           
 
-//           dayTemp.textContent = Math.round(celciusMin) 
+          dayTemp.textContent = Math.round(celciusMin) 
+          document.getElementById('real').textContent = Math.round(celciusMax) + "°C" ;
+          nightTemp.textContent = Math.round(celciusMax) 
 
-//           nightTemp.textContent = Math.round(celciusMax) 
 
+          const iconWnight = days.Night.IconPhrase;
 
-//           const iconWnight = days.Night.IconPhrase;
+          const HasPrecipitation = days.Day.HasPrecipitation;
+          if(HasPrecipitation == true){
+            document.getElementById('HasPrecipitation').innerHTML = days.Day.HasPrecipitation;
+            document.getElementById('PrecipitationType').innerHTML = days.Day.PrecipitationType;
+            document.getElementById('PrecipitationIntensity').innerHTML = days.Day.PrecipitationIntensity;
+           }else {
+            document.getElementById('HasPrecipitation').innerHTML = days.Day.HasPrecipitation;
+            document.getElementById('PrecipitationType').innerHTML = "none";
+            document.getElementById('PrecipitationIntensity').innerHTML = "none";
+          }
 
-//           const HasPrecipitation = days.Day.HasPrecipitation;
-//           if(HasPrecipitation == true){
-//             document.getElementById('HasPrecipitation').innerHTML = days.Day.HasPrecipitation;
-//             document.getElementById('PrecipitationType').innerHTML = days.Day.PrecipitationType;
-//             document.getElementById('PrecipitationIntensity').innerHTML = days.Day.PrecipitationIntensity;
-//            }else {
-//             document.getElementById('HasPrecipitation').innerHTML = days.Day.HasPrecipitation;
-//             document.getElementById('PrecipitationType').innerHTML = "none";
-//             document.getElementById('PrecipitationIntensity').innerHTML = "none";
-//           }
-
-//           if(iconWnight === "Cloudy"){
-//             imgNight.setAttribute('src', './images/clouds2.png'); 
-//           }
-//           if(iconWnight === "Rain shower"){
-//             imgNight.setAttribute('src', './images/Rainy.png')
-//           }
-//           if(iconWnight === "Thunderstorms"){
-//             imgNight.setAttribute('src', './images/thunder.png')
-//           }
-//           if(iconWnight === "Showers"){
-//               imgNight.setAttribute('src', './images/Rainy.png')
-//             }
-//             if(iconWnight === "Partly Cloudy"){
-//               imgNight.setAttribute('src', './images/clouds2.png')
-//           }
-          
-//           statusDay.textContent = days.Day.IconPhrase;
-//           statusNight.textContent = days.Night.IconPhrase;
-//         }
+          if(iconWnight === "Cloudy"){
+            imgNight.setAttribute('src', './images/clouds2.png'); 
+          }
+          if(iconWnight === "Rain shower"){
+            imgNight.setAttribute('src', './images/Rainy.png')
+          }
+          if(iconWnight === "Thunderstorms"){
+            imgNight.setAttribute('src', './images/thunder.png')
+          }
+          if(iconWnight === "Showers"){
+              imgNight.setAttribute('src', './images/Rainy.png')
+            }
+            if(iconWnight === "Partly Cloudy"){
+              imgNight.setAttribute('src', './images/clouds2.png')
+          }
+          if(iconWnight === "Clear"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/33-s.png')
+          }
+          if(iconWnight === "Mostly Clear"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/34-s.png')
+          }
+          if(iconWnight === "Partly Cloudy"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/35-s.png')
+          }
+          if(iconWnight === "Intermittent Clouds"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/36-s.png')
+          }
+          if(iconWnight === "Hazy Moonlight"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/37-s.png')
+          }
+          if(iconWnight === "Mostly Cloudy"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/38-s.png')
+          }
+          if(iconWnight === "Partly Cloudy w/ Showers"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/39-s.png')
+          }
+          if(iconWnight === "Mostly Cloudy w/ Showers"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/40-s.png')
+          }
+          if(iconWnight === "Partly Cloudy w/ T-Storms"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/41-s.png')
+          }
+          if(iconWnight === "Mostly Cloudy w/ T-Storms"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/42-s.png')
+          }
+          if(iconWnight === "Mostly Cloudy w/ Flurries"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/43-s.png')
+          }
+          if(iconWnight === "	Mostly Cloudy w/ Snow"){
+            imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/44-s.png')
+          }
+          statusDay.textContent = days.Day.IconPhrase;
+          statusNight.textContent = days.Night.IconPhrase;
+        }
     
-// }
+}
 
 // ----------END OF Functions for GeoPosition Search
 
@@ -202,6 +307,35 @@ const checkCity = async (data) => {
                
         }
       }
+      checkAirQuality(data);
+}
+
+const checkAirQuality = async (data) => {
+
+  for (let datas of data) {
+    const locationKey = datas.Key;
+   
+    const airQuality = document.getElementById('airQuality');
+  
+    const res = await axios.get(`http://dataservice.accuweather.com/indices/v1/daily/1day/${locationKey}/-10?`,config2);
+    
+    for (let cat of res.data){
+     // console.log(cat.Category);
+     const airCategory = cat.Category;
+        if (airCategory === "Good") {
+          airQuality.setAttribute('style','color:blue');
+        }
+        if (airCategory === "Excellent") {
+          airQuality.setAttribute('style','color:green');
+        }
+        if (airCategory === "Poor") {
+          airQuality.setAttribute('style','color:red');
+        }
+      airQuality.textContent = airCategory;
+
+    }
+ 
+  }
 }
 
 const currentWeather = async (datacurrent) => {
@@ -212,10 +346,67 @@ const currentWeather = async (datacurrent) => {
             for(data of datacurrent){
                 
                 const iconW = data.WeatherText;
-
-                if(iconW === "Cloudy"){
-                    img.setAttribute('src', './images/clouds2.png'); 
+                if(iconW === "Sunny") {
+                  img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/01-s.png');
                 }
+                if(iconW === "Mostly Sunny") {
+                  img.setAttribute('src', ' https://developer.accuweather.com/sites/default/files/02-s.png');
+                }
+                if(iconW === "Partly Sunny") {
+                  img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/03-s.png');
+                }
+                if(iconW === "Intermittent Clouds") {
+                  img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/04-s.png');
+                }
+                if(iconW === "Hazy Sunshine") {
+                  img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/05-s.png');
+                }
+                if(iconW === "Mostly Cloudy") {
+                  img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/06-s.png');
+                }
+                if(iconW === "Cloudy"){
+                    img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/07-s.png'); 
+                }
+                if(iconW === "Dreary (Overcast)"){
+                  img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/08-s.png'); 
+              }
+              if(iconW === "Dreary (Overcast)"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/08-s.png'); 
+              }
+              if(iconW === "Fog"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/11-s.png'); 
+              }
+              if(iconW === "Showers"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/12-s.png'); 
+              }
+              if(iconW === "Mostly Cloudy w/ Showers"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/13-s.png'); 
+              }
+              if(iconW === "Partly Sunny w/ Showers"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/14-s.png'); 
+              }
+              if(iconW === "T-Storms"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/15-s.png'); 
+              }
+              if(iconW === "Mostly Cloudy w/ T-Storms"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/16-s.png'); 
+              }
+              if(iconW === "Partly Sunny w/ T-Storms"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/17-s.png'); 
+              }
+              if(iconW === "Rain"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/18-s.png'); 
+              }
+              if(iconW === "Flurries"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/19-s.png'); 
+              }
+              if(iconW === "Mostly Cloudy w/ Flurries"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/20-s.png'); 
+              }
+              if(iconW === "Partly Sunny w/ Flurries"){
+                img.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/21-s.png'); 
+              }
+
                 if(iconW === "Rain shower"){
                     img.setAttribute('src', './images/Rainy.png')
                 }
@@ -260,7 +451,7 @@ const dailyForcast = async (data) => {
   
             const statusNight = document.getElementById('statusNight');
 
-            const dayDetails = document.getElementById('dayDetails');
+            // const dayDetails = document.getElementById('dayDetails');
 
             // const pTag = document.createElement('div');
 
@@ -288,9 +479,66 @@ const dailyForcast = async (data) => {
   
             const iconWday = days.Day.IconPhrase;
   
-            if(iconWday === "Cloudy"){
-              imgDay.setAttribute('src', './images/clouds2.png'); 
+            if(iconWday === "Sunny") {
+              imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/01-s.png');
             }
+            if(iconWday === "Mostly Sunny") {
+              imgDay.setAttribute('src', ' https://developer.accuweather.com/sites/default/files/02-s.png');
+            }
+            if(iconWday === "Partly Sunny") {
+              imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/03-s.png');
+            }
+            if(iconWday === "Intermittent Clouds") {
+              imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/04-s.png');
+            }
+            if(iconWday === "Hazy Sunshine") {
+              imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/05-s.png');
+            }
+            if(iconWday === "Mostly Cloudy") {
+              imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/06-s.png');
+            }
+            if(iconWday === "Cloudy"){
+                imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/07-s.png'); 
+            }
+            if(iconWday === "Dreary (Overcast)"){
+              imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/08-s.png'); 
+          }
+          if(iconWday === "Dreary (Overcast)"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/08-s.png'); 
+          }
+          if(iconWday === "Fog"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/11-s.png'); 
+          }
+          if(iconWday === "Showers"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/12-s.png'); 
+          }
+          if(iconWday === "Mostly Cloudy w/ Showers"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/13-s.png'); 
+          }
+          if(iconWday === "Partly Sunny w/ Showers"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/14-s.png'); 
+          }
+          if(iconWday === "T-Storms"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/15-s.png'); 
+          }
+          if(iconWday === "Mostly Cloudy w/ T-Storms"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/16-s.png'); 
+          }
+          if(iconWday === "Partly Sunny w/ T-Storms"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/17-s.png'); 
+          }
+          if(iconWday === "Rain"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/18-s.png'); 
+          }
+          if(iconWday === "Flurries"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/19-s.png'); 
+          }
+          if(iconWday === "Mostly Cloudy w/ Flurries"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/20-s.png'); 
+          }
+          if(iconWday === "Partly Sunny w/ Flurries"){
+            imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/21-s.png'); 
+          }
             if(iconWday === "Rain shower"){
               imgDay.setAttribute('src', './images/Rainy.png')
             }
@@ -305,10 +553,12 @@ const dailyForcast = async (data) => {
                 imgDay.setAttribute('src', './images/clouds2.png')
             }
 
+
+
             
   
             dayTemp.textContent = Math.round(celciusMin) 
-  
+            document.getElementById('real').textContent = Math.round(celciusMax) + "°C" ;
             nightTemp.textContent = Math.round(celciusMax) 
   
   
@@ -329,7 +579,43 @@ const dailyForcast = async (data) => {
               if(iconWnight === "Partly Cloudy"){
                 imgNight.setAttribute('src', './images/clouds2.png')
             }
-            
+            if(iconWnight === "Clear"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/33-s.png')
+            }
+            if(iconWnight === "Mostly Clear"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/34-s.png')
+            }
+            if(iconWnight === "Partly Cloudy"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/35-s.png')
+            }
+            if(iconWnight === "Intermittent Clouds"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/36-s.png')
+            }
+            if(iconWnight === "Hazy Moonlight"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/37-s.png')
+            }
+            if(iconWnight === "Mostly Cloudy"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/38-s.png')
+            }
+            if(iconWnight === "Partly Cloudy w/ Showers"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/39-s.png')
+            }
+            if(iconWnight === "Mostly Cloudy w/ Showers"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/40-s.png')
+            }
+            if(iconWnight === "Partly Cloudy w/ T-Storms"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/41-s.png')
+            }
+            if(iconWnight === "Mostly Cloudy w/ T-Storms"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/42-s.png')
+            }
+            if(iconWnight === "Mostly Cloudy w/ Flurries"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/43-s.png')
+            }
+            if(iconWnight === "	Mostly Cloudy w/ Snow"){
+              imgNight.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/44-s.png')
+            }
+
             statusDay.textContent = days.Day.IconPhrase;
             statusNight.textContent = days.Night.IconPhrase;
           }
