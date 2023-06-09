@@ -8,7 +8,7 @@ const currentTimeT = () => {
 }
 currentTimeT();
 
-const apiKey = "r1mSiqCerHW8c04GI5X5UU85oFTHz792";
+const apiKey = "4zuh1IEsKAhyQxWM8SsABGNun90QlQ14";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
 const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
 
@@ -53,6 +53,7 @@ document.body.onload = function (){
 // }
 // dailyForcastGeo(data);
 // airQualityGeo(data);
+// checkAirQuality(data);
 // }
 // const airQualityGeo = async (data) => {
 //     const locationKey = data.Key;
@@ -93,7 +94,7 @@ document.body.onload = function (){
      
   
 //           const minTemp = days.Temperature.Minimum.Value;
-      
+//      document.getElementById('real').textContent = Math.round(celciusMax) + "°C" ;
 //           const maxTemp = days.Temperature.Maximum.Value;
 
 //           const celciusMin = ((minTemp - 32) * 5 / 9);
@@ -202,6 +203,35 @@ const checkCity = async (data) => {
                
         }
       }
+      checkAirQuality(data);
+}
+
+const checkAirQuality = async (data) => {
+
+  for (let datas of data) {
+    const locationKey = datas.Key;
+   
+    const airQuality = document.getElementById('airQuality');
+  
+    const res = await axios.get(`http://dataservice.accuweather.com/indices/v1/daily/1day/${locationKey}/-10?`,config2);
+    
+    for (let cat of res.data){
+     // console.log(cat.Category);
+     const airCategory = cat.Category;
+        if (airCategory === "Good") {
+          airQuality.setAttribute('style','color:blue');
+        }
+        if (airCategory === "Excellent") {
+          airQuality.setAttribute('style','color:green');
+        }
+        if (airCategory === "Poor") {
+          airQuality.setAttribute('style','color:red');
+        }
+      airQuality.textContent = airCategory;
+
+    }
+ 
+  }
 }
 
 const currentWeather = async (datacurrent) => {
@@ -308,7 +338,7 @@ const dailyForcast = async (data) => {
             
   
             dayTemp.textContent = Math.round(celciusMin) 
-  
+            document.getElementById('real').textContent = Math.round(celciusMax) + "°C" ;
             nightTemp.textContent = Math.round(celciusMax) 
   
   
