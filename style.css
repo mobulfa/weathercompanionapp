@@ -247,21 +247,45 @@ justify-content: space-between;
 #tipsOftheday h6{
     margin-top: 20px;
 }
+footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+   border: 1px solid white;
+}
+footer h6{
+    text-align: center;
+    font-size: x-large;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 20px;
+}
+#newsLetter{
+    display: flex;
+    justify-content: center;
 
+}
+
+#newsLetter form{ 
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .footer-div {
     background-color: #4280DC !important;
     height: 50px !important;
     outline: none !important;
     display: flex;
     justify-content: flex-end;
-    align-items: center;   
+    /* align-items: center;    */
     /* position: fixed; */
     left: 0;
     bottom: 0;
     width: 100%; 
 }
 .footer-div i{
-    margin-right: 20px;
+    /* margin-right: 20px; */
     color: #ffffff;
 }
 div .footer {
