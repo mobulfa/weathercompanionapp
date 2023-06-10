@@ -20,19 +20,20 @@
     background: url('./images/img/nlbg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 60%; /* Could be more or less, depending on screen size */
-    height: 60%;
+    height: 70%;
     
   }
   
   /* The Close Button */
   .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
+    color: #363535;
+    display: flex;
+    justify-content: end;
+    font-size: 30px;
     font-weight: bold;
   }
   
@@ -77,7 +78,7 @@
     color: #fff;
   }
   
-  .container{
+  /* .container{
     width: 100%;
     display: flex;
     justify-content: center;
@@ -85,7 +86,7 @@
     margin-top: 30px;
     background-color: rgb(73, 223, 223);
   }
-  
+   */
   .container .contactInfo{
     width: 50%;
     display: flex;
@@ -132,7 +133,7 @@
   .contactForm{
     background-color: #fff;
     width: 70%;
-    height: 80%;
+    height: 90%;
     display: flex;
     margin: auto;
     padding: 20px ;
