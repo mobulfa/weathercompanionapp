@@ -249,44 +249,47 @@ justify-content: space-between;
 }
 footer{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
-    padding: 0 20px;
-   border: 1px solid white;
+    background-color: rgb(152, 100, 3);
 }
-footer h6{
+footer h1{
     text-align: center;
-    font-size: x-large;
+    font-size: 30px;
     color: #ffffff;
     font-weight: bold;
     margin: 20px;
 }
-#newsLetter{
-    display: flex;
-    justify-content: center;
-
-}
 
 #newsLetter form{ 
-    display: inline-flex;
+    display: block;
     justify-content: space-between;
     align-items: center;
 }
+#newsLetter .inputBox {
+    width: 100%;
+}
 .footer-div {
-    background-color: #4280DC !important;
-    height: 50px !important;
+    /* background-color: #4280DC !important; */
+    /* height: 300px !important; */
     outline: none !important;
-    display: flex;
-    justify-content: flex-end;
+    /* display: flex; */
+    /* justify-content: flex-end; */
     /* align-items: center;    */
     /* position: fixed; */
     left: 0;
     bottom: 0;
     width: 100%; 
 }
-.footer-div i{
-    /* margin-right: 20px; */
-    color: #ffffff;
+#icon-container{
+    display: flex;
+    color: white;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+#icon-container i{
+    margin: 20px;
 }
 div .footer {
     background-color: #4280DC !important ;
@@ -324,6 +327,47 @@ div .footer {
     height: 10rem;
 
 }
+
+.content-2 {
+	height: 50px;
+	padding: 0 20px;
+	background-color: #023c66;
+	display: flex;
+	align-items: center;
+    justify-content: flex-end;
+	justify-content: space-between;
+}
+
+.content-2 p{
+	font-size: 12px;
+	font-weight: 200;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.content-2 p a{
+	color: #ed4e6a;
+	text-decoration: none;
+	font-weight: 400;
+}
+
+.content-2 ul li{
+	list-style: none;
+	display: inline;
+}
+
+.content-2 ul li a{
+	text-decoration: none;
+	font-size: 13px;
+	font-weight: 300;
+	margin-left: 15px;
+	color: rgba(255, 255, 255, 0.5);
+	transition: 0.5s;
+}
+
+.content-2 ul li a:hover{
+	color: rgba(255, 255, 255, 1);
+}
+
 
 
 @media(max-width: 900px){
