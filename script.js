@@ -340,6 +340,8 @@ const currentWeather = async (datacurrent) => {
             const img = document.getElementById('wIcon');
             const currentTemp = document.getElementById('currentTemp');
             const status = document.getElementById('status');
+            const body = document.body;
+
 
             for(data of datacurrent){
                 
@@ -419,6 +421,9 @@ const currentWeather = async (datacurrent) => {
                 currentTemp.textContent = Math.round(tempC);
 
                status.textContent = data.WeatherText;  
+              //  if (status.textContent === "Clear Sky") {
+              //   body.setAttribute('style', 'background-color:rgb(7, 188, 249);')
+              //  }
  
             }          
 }

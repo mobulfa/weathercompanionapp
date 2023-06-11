@@ -6,7 +6,7 @@ body {
    
     /* background-image: url(/images/clearskyback.jpg); */
     background-repeat: no-repeat;
-    background-color: #4280dc;
+    background-color: rgb(7, 188, 249);;
     min-height: 100vh;
     display: grid;
     grid-template-rows:1fr auto;
@@ -23,7 +23,7 @@ body {
    
 }
 .navbar{
-    background-color: #4280DC !important;
+    background-color: #023c66 !important;
 }
 .nav-link {
     color: #ffffff;
@@ -81,7 +81,7 @@ body {
     margin-top: 50px !important;
     width: 90%;
     height: 500px;
-    background-color: #4280dc21 ;
+    background-color: #4280dc00 ;
     /* border-radius: 20px; */
     /* box-shadow: 2px 2px 12px rgba(0,0,0,0.2); */
     display: flex;

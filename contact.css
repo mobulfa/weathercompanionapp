@@ -9,7 +9,7 @@ body {
  
   /* background-image: url(/images/clearskyback.jpg); */
   background-repeat: no-repeat;
-  background-color: #4280DC;
+  background-color: rgb(7, 188, 249);;
   min-height: 100vh;
   display: grid;
   grid-template-rows:1fr auto;
@@ -25,7 +25,7 @@ body {
   width:100px;
 }
 .navbar{
-  background-color: #4280DC !important;
+  background-color: #023c66 !important;
 }
 .nav-link {
   color: #ffffff;
@@ -67,12 +67,12 @@ form {
 }
 
 div .footer {
-background-color: #4280DC !important ;
+background-color: #023c66!important ;
 
 }
 
 .footer-div {
-  background-color: #4280DC !important;
+  background-color: #023c66 !important;
   height: 50px !important;
   outline: none !important;
   display: flex;
