@@ -328,6 +328,65 @@ div .footer {
 
 }
 
+.content{
+	width: 100%;
+	height: auto;
+	background-color: #00477b;
+	padding: 30px 0;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.content h3{
+	font-size: 30px;
+	font-weight: 300;
+	color: #fff;
+}
+
+.content p{
+	font-size: 20px;
+	font-weight: 200;
+	color: rgba(255, 255, 255, 0.611);
+}
+
+.content form{
+	width: 500px;
+	height: 55px;
+	margin-top: 10px;
+	background-color: #fff;
+	border-radius: 100px;
+	display: flex;
+}
+
+.content form input{
+	flex: 1;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	padding-left: 30px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #36454f;
+}
+
+.content form button{
+	width: 100px;
+	border-radius: 100px;
+	font-size: 14px;
+	border: none;
+	outline: none;
+	background-color: #ed4e6a;
+	color: #fff;
+	margin: 4px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.content form button:hover{
+	background-color: #e24c66;
+}
+
 .content-2 {
 	height: 50px;
 	padding: 0 20px;
@@ -368,7 +427,20 @@ div .footer {
 	color: rgba(255, 255, 255, 1);
 }
 
+.social-links{
+	margin-top: 20px;
+}
+.social-links i{
+	font-size: 35px;
+	margin: 20px 10px 0 10px;
+	color: rgba(255, 255, 255, 0.3);
+	cursor: pointer;
+	transition: 0.5s;
+}
 
+.social-links i:hover{
+	color: rgb(255, 255, 255);
+}
 
 @media(max-width: 900px){
     #mainContent { display: flex; flex-direction: column; justify-content: center; align-items: center; }

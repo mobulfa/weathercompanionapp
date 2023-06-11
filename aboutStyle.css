@@ -316,7 +316,7 @@ footer{
 .content form button{
 	width: 100px;
 	border-radius: 100px;
-	font-size: 25px;
+	font-size: 14px;
 	border: none;
 	outline: none;
 	background-color: #ed4e6a;
@@ -329,7 +329,9 @@ footer{
 .content form button:hover{
 	background-color: #e24c66;
 }
-
+.social-links{
+	margin-top: 20px;
+}
 .social-links i{
 	font-size: 35px;
 	margin: 20px 10px 0 10px;
@@ -339,7 +341,7 @@ footer{
 }
 
 .social-links i:hover{
-	color: rgba(255, 255, 255, 0.6);
+	color: rgb(255, 255, 255);
 }
 
 .content-2 {
