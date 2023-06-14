@@ -22,6 +22,7 @@ const currentTimeT = () => {
                 var ampm = h >= 12 ? 'PM' : 'AM';
                 h = h % 12;
                 h = h ? h : 12; // the hour '0' should be '12'
+                h = h < 10 ? '0'+h : h;
                 m = m < 10 ? '0'+m : m;
                 s = s< 10 ? '0'+s : s;
                 currentTime1.textContent = h + ' ' + ':' + ' ' +m + ' ' + s + ' ' + ampm;
@@ -30,7 +31,7 @@ const currentTimeT = () => {
 // currentTimeT();
 setInterval(currentTimeT, 1000)
 
-const apiKey = "qGinetyLVbLjcHnDlSOpGS6oXUD8dWlA";
+const apiKey = "okLlT3An6ecfNwsEOtDpAHRJGQtJRb9Y";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
 const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
 
@@ -40,26 +41,26 @@ const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/citi
 // ----------START of Functions for GeoPosition Search
 const btnLocation = document.getElementById('btnlocation');
 
-document.body.onload = function (){
-  userLocation();
-};
+// document.window.onload = function (){
+//   userLocation();
+// };
 
-// const userLocation = () => {
-//   if(navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(currentLocation);
-//   } else {
-//     showLocation.innerHTML = "Your browser does not support this feature.";
-//   }
-// }
+const userLocation = () => {
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(currentLocation);
+  } else {
+    showLocation.innerHTML = "Your browser does not support this feature.";
+  }
+}
 
-// const currentLocation = async (lat) => {
-//   const currentPositionlat = lat.coords.latitude;
-//   const currentPositionlong = lat.coords.longitude;
-//   const locationResult = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${currentPositionlat},${currentPositionlong}`, config2);
+const currentLocation = async (lat) => {
+  const currentPositionlat = lat.coords.latitude;
+  const currentPositionlong = lat.coords.longitude;
+  const locationResult = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${currentPositionlat},${currentPositionlong}`, config2);
 
-//    getCurrentLocation(locationResult.data);
+   getCurrentLocation(locationResult.data);
 
-// }
+}
 
 const getCurrentLocation = async (data) => {
   const localizedName = document.getElementById('localizedName');
@@ -299,10 +300,11 @@ const config2 = {params: {apikey: apiKey}, headers:{}};
 form.addEventListener('submit', async function(e) {
 	e.preventDefault();
   const message = document.getElementById('infoMessage');
-	 const searchTerm = form.elements.q.value;
+  const formValue = form.elements.q.value;
+	 const searchTerm = formValue.trim();
     const config = {params: {q: searchTerm, apikey: apiKey}, headers:{}};
-   
-  if (searchTerm.length !== 0 ) {
+   const allLetters = /^[A-Za-z]+$/;
+  if (searchTerm.length !== 0 || searchTerm == searchTerm.match(allLetters) ) {
       const res = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?`, config);
       checkCity(res.data);
       dailyForcast(res.data);
@@ -673,6 +675,7 @@ const form2 = document.forms['newsLetter-footer'];
  // When the user clicks on <script> (x), close the modal
  span.onclick = function() {
  modal.style.display = "none";
+ userLocation();
  
  }
  
@@ -680,6 +683,7 @@ const form2 = document.forms['newsLetter-footer'];
  window.onclick = function(event) {
  if (event.target === modal) {
  modal.style.display = "none";
+ userLocation();
  }
  }
  
@@ -687,11 +691,15 @@ const form2 = document.forms['newsLetter-footer'];
 
  form3.addEventListener('submit', e => {
   e.preventDefault()
+
+  
   fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
     .then(response => console.log('Success!', response))
     .catch(error => console.error('Error!', error.message))
+
     document.getElementById("myForm").reset();
     // alert("You have been added to our Newsletter, Cheers!");
+
    const message =  document.getElementById('message');
 
    message.textContent = "You have been added to our Newsletter, Cheers!";
