@@ -19,7 +19,7 @@ const currentTimeT = () => {
                 var s = d.getSeconds();
                 var m = d.getMinutes();
                 var h = d.getHours();
-                var ampm = h >= 12 ? 'pm' : 'am';
+                var ampm = h >= 12 ? 'PM' : 'AM';
                 h = h % 12;
                 h = h ? h : 12; // the hour '0' should be '12'
                 m = m < 10 ? '0'+m : m;
