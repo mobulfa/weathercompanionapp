@@ -2,11 +2,33 @@ const currentTimeT = () => {
                 //Time Script
                 var time = new Date();
                 //var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                
+                const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
                 const currentTime1 = document.getElementById('currentTime');
-                currentTime1.textContent = time.toLocaleString(('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
+                const dateToday = document.getElementById('dateToday');
+                // currentTime1.textContent = time.toLocaleString(('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }));
+               
+                var month = months[time.getMonth()]; 
+                var day = time.getDate();
+                var year = time.getFullYear();
+                var weekday = days[time.getDay()];
+
+                 dateToday.textContent = " " + weekday + ", " + month + " " + day + ", " + year;
+
+                var d = new Date();
+                var s = d.getSeconds();
+                var m = d.getMinutes();
+                var h = d.getHours();
+                var ampm = h >= 12 ? 'pm' : 'am';
+                h = h % 12;
+                h = h ? h : 12; // the hour '0' should be '12'
+                m = m < 10 ? '0'+m : m;
+                s = s< 10 ? '0'+s : s;
+                currentTime1.textContent = h + ' ' + ':' + ' ' +m + ' ' + s + ' ' + ampm;
+           
 }
-currentTimeT();
+// currentTimeT();
+setInterval(currentTimeT, 1000)
 
 const apiKey = "qGinetyLVbLjcHnDlSOpGS6oXUD8dWlA";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
@@ -280,17 +302,15 @@ form.addEventListener('submit', async function(e) {
 	 const searchTerm = form.elements.q.value;
     const config = {params: {q: searchTerm, apikey: apiKey}, headers:{}};
    
-  if (searchTerm.length !== 0) {
+  if (searchTerm.length !== 0 ) {
       const res = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?`, config);
       checkCity(res.data);
-
       dailyForcast(res.data);
-
       form.elements.q.value = '';	
       message.setAttribute('style','display:none');
   } else {
       message.setAttribute('style','display:flex');
-      document.getElementById("searchCity").reset();
+      // document.getElementById("searchCity").reset();
   }
 	
 })
@@ -627,3 +647,74 @@ const dailyForcast = async (data) => {
     }   
 }
 // ----------END OF Functions for City Search
+
+
+// -------------------Function for News Letter
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycby0VL6xWvE5rwwCK7ajul_Gu4-esvx443HHSm8t9JfHIBwhXH4rBHVnpdOa-vrCYP_EtQ/exec'
+const form3 = document.forms['newsLetter'];
+const form2 = document.forms['newsLetter-footer'];
+
+ // Get the modal
+ var modal = document.getElementById("myModal");
+  
+ // Get the button that opens the modal
+ var btn = document.getElementById("myBtn");
+ 
+ // Get the <span> element that closes the modal
+ var span = document.getElementsByClassName("close")[0];
+ 
+ // When the user clicks on the button, open the modal
+ window.onload = function() {
+ modal.style.display = "block";
+
+ }
+ 
+ // When the user clicks on <script> (x), close the modal
+ span.onclick = function() {
+ modal.style.display = "none";
+ 
+ }
+ 
+ // When the user clicks anywhere outside of the modal, close it
+ window.onclick = function(event) {
+ if (event.target === modal) {
+ modal.style.display = "none";
+ }
+ }
+ 
+
+
+ form3.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
+    .then(response => console.log('Success!', response))
+    .catch(error => console.error('Error!', error.message))
+    document.getElementById("myForm").reset();
+    // alert("You have been added to our Newsletter, Cheers!");
+   const message =  document.getElementById('message');
+
+   message.textContent = "You have been added to our Newsletter, Cheers!";
+   message.setAttribute('style', 'color:green; text-align: center;');
+  
+        })
+
+  form2.addEventListener('submit', e => {
+  e.preventDefault()
+  const email = document.getElementById('email');
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form2)})
+    .then(response => console.log('Success!', response))
+    .catch(error => console.log('Error!', error.message))
+
+    document.getElementById("myForm-footer").reset();
+    alert("You have been added to our Newsletter, Cheers!");
+  //  const message =  document.getElementById('message');
+
+  //  message.textContent = "You have been added to our Newsletter, Cheers!";
+  //  message.setAttribute('style', 'color:green; text-align: center;');
+ 
+
+        })
+  
+ 
