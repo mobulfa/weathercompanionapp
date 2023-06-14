@@ -8,7 +8,7 @@ const currentTimeT = () => {
 }
 currentTimeT();
 
-const apiKey = "5V3GoOkajbyA0UecBFfzMhtzOLVblpo6";
+const apiKey = "qGinetyLVbLjcHnDlSOpGS6oXUD8dWlA";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
 const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
 
@@ -22,22 +22,22 @@ document.body.onload = function (){
   userLocation();
 };
 
-const userLocation = () => {
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(currentLocation);
-  } else {
-    showLocation.innerHTML = "Your browser does not support this feature.";
-  }
-}
+// const userLocation = () => {
+//   if(navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(currentLocation);
+//   } else {
+//     showLocation.innerHTML = "Your browser does not support this feature.";
+//   }
+// }
 
-const currentLocation = async (lat) => {
-  const currentPositionlat = lat.coords.latitude;
-  const currentPositionlong = lat.coords.longitude;
-  const locationResult = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${currentPositionlat},${currentPositionlong}`, config2);
+// const currentLocation = async (lat) => {
+//   const currentPositionlat = lat.coords.latitude;
+//   const currentPositionlong = lat.coords.longitude;
+//   const locationResult = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=${currentPositionlat},${currentPositionlong}`, config2);
 
-   getCurrentLocation(locationResult.data);
+//    getCurrentLocation(locationResult.data);
 
-}
+// }
 
 const getCurrentLocation = async (data) => {
   const localizedName = document.getElementById('localizedName');
@@ -276,15 +276,23 @@ const config2 = {params: {apikey: apiKey}, headers:{}};
 
 form.addEventListener('submit', async function(e) {
 	e.preventDefault();
+  const message = document.getElementById('infoMessage');
 	 const searchTerm = form.elements.q.value;
     const config = {params: {q: searchTerm, apikey: apiKey}, headers:{}};
-    const res = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?`, config);
+   
+  if (searchTerm.length !== 0) {
+      const res = await axios.get(`https://dataservice.accuweather.com/locations/v1/cities/search?`, config);
+      checkCity(res.data);
 
-    checkCity(res.data);
+      dailyForcast(res.data);
 
-    dailyForcast(res.data);
-
-    form.elements.q.value = '';		
+      form.elements.q.value = '';	
+      message.setAttribute('style','display:none');
+  } else {
+      message.setAttribute('style','display:flex');
+      document.getElementById("searchCity").reset();
+  }
+	
 })
 
 const checkCity = async (data) => {
@@ -408,7 +416,7 @@ const currentWeather = async (datacurrent) => {
                 if(iconW === "Rain shower"){
                     img.setAttribute('src', './images/Rainy.png')
                 }
-                if(iconWday === "Thunderstorms"){
+                if(iconW === "Thunderstorms"){
                   imgDay.setAttribute('src', 'https://developer.accuweather.com/sites/default/files/15-s.png')
                 }
                 if(iconW === "Partly cloudy"){

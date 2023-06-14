@@ -43,11 +43,18 @@
       </nav>
       
       <!-- <div class="container searchbar"> -->
+        <div class="container" id="messageContainer">
+          <div class="infoMessage" id="infoMessage">Please Enter A Valid City</div>
+        </div>
+        
         <form class="d-flex" role="search" id="searchCity">
+          
           <input class="form-control me-sm-2" type="text" placeholder="Search City" name="q" >
           <button class="btnicon" type="submit" ><img src="./images/searchicon.png" alt="searchicon"></button>
           <!-- <button class="btnlocation"><img src="./images/location.png" alt="" id="btnlocation" onclick="userLocation()"></button> -->
         </form>
+
+        
       <!-- </div> -->
 
     <!-- The Modal -->
@@ -277,7 +284,7 @@
             <h3>Let's Connect</h3>
             <p>stay updated with our news letter</p>
             <form name="newsLetter-footer" id="myForm-footer">
-              <input type="email" placeholder="enter your email" name="email">
+              <input type="email" placeholder="enter your email" name="email" required>
               <button name="submit"><i class='bx bxs-paper-plane'>Subscribe</i></button>
             </form>
   
@@ -312,8 +319,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-  <script src="script.js"></script>
   <script src="newsletter.js"></script>
+  <script src="script.js"></script>
+  
 </body>
 </html>

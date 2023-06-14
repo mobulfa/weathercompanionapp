@@ -18,16 +18,20 @@ form.addEventListener('submit', e => {
 
   form2.addEventListener('submit', e => {
   e.preventDefault()
-  fetch(scriptURL, { method: 'POST', body: new FormData(form2)})
+  const email = document.getElementById('email');
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form2)})
     .then(response => console.log('Success!', response))
-    .catch(error => console.error('Error!', error.message))
+    .catch(error => console.log('Error!', error.message))
+
     document.getElementById("myForm-footer").reset();
     alert("You have been added to our Newsletter, Cheers!");
   //  const message =  document.getElementById('message');
 
   //  message.textContent = "You have been added to our Newsletter, Cheers!";
   //  message.setAttribute('style', 'color:green; text-align: center;');
-  
+ 
+
         })
   
   // Get the modal
