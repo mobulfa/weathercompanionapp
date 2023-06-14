@@ -100,7 +100,7 @@
                   <span>Message...</span>
                 </div>
                 <div class="inputBox">
-                  <button type="submit" class="btn-submit" name="submit">Submit</button>
+                  <button type="submit" class="btn-submit" name="submit" onclick="validEmailNameMsg()">Submit</button>
                 </div>
 
                 <div class="checkbox">
@@ -135,13 +135,24 @@
           fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => console.log('Success!', response))
             .catch(error => console.error('Error!', error.message))
-            document.getElementById("myForm").reset();
-            alert("Your message has been sent!");
+            
             // const message =  document.getElementById('message');
             // message.textContent = "Your message has been sent!";
             // message.setAttribute('style', 'color:green; text-align: center;');
         })
 
+        const validEmailNameMsg = () => {
+            if (form.value === ' ') {
+              return;
+              alert('Invalid entry')
+
+            }else{
+              document.getElementById("myForm").reset()
+              alert("Your message has been sent!")
+
+            }
+        };
+ 
         const currentTimeT = () => {
                 //Time Script
                 var time = new Date();
