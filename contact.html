@@ -85,14 +85,15 @@
 
           
           <div class="contactForm" >
+            <p id="message"></p>
               <form name="contact-us" id="myForm">
                 <h2>Send Message</h2>
                 <div class="inputBox">
-                  <input type="text" name="name" required="required">
+                  <input type="text" name="name" required id="name">
                   <span>Full Name</span>
                 </div>
                 <div class="inputBox">
-                  <input type="text" name="email" required="required">
+                  <input type="email" name="email" required id="email">
                   <span>Email</span>
                 </div>
                 <div class="inputBox">
@@ -132,15 +133,28 @@
       
         form.addEventListener('submit', e => {
           e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          const name = document.getElementById('name');
+          const formValue = form.elements.name.value
+          const nameTrim = formValue.trim();
+          const allLetters = /^[A-Za-z]+$/;
+          if(nameTrim.length !== 0 || nameTrim == nameTrim.match(allLetters)) {
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => console.log('Success!', response))
             .catch(error => console.error('Error!', error.message))
+
             document.getElementById("myForm").reset();
-            alert("Your message has been sent!");
-            // const message =  document.getElementById('message');
-            // message.textContent = "Your message has been sent!";
-            // message.setAttribute('style', 'color:green; text-align: center;');
-        })
+            alert("Your message has been sent! Thank You");
+           
+            }
+            else {
+               const message =  document.getElementById('message');
+            message.textContent = "Please Review Your Input, Some Input are not Valid";
+            message.setAttribute('style', 'color:red; text-align: center;');
+            }
+          })
+          
+
 
         const currentTimeT = () => {
                 //Time Script
