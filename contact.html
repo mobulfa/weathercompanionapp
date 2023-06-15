@@ -101,7 +101,7 @@
                   <span>Message...</span>
                 </div>
                 <div class="inputBox">
-                  <button type="submit" class="btn-submit" name="submit">Submit</button>
+                  <button type="submit" class="btn-submit" name="submit" onclick="validEmailNameMsg()">Submit</button>
                 </div>
 
                 <div class="checkbox">
@@ -143,8 +143,13 @@
             .then(response => console.log('Success!', response))
             .catch(error => console.error('Error!', error.message))
 
+        
+            // alert("Your message has been sent! Thank You");
+            const message =  document.getElementById('message');
+            message.textContent = "Your message has been sent! Thank You";
+            message.setAttribute('style', 'color:green; text-align: center;');
+
             document.getElementById("myForm").reset();
-            alert("Your message has been sent! Thank You");
            
             }
             else {
@@ -156,6 +161,18 @@
           
 
 
+        const validEmailNameMsg = () => {
+            if (form.value === ' ') {
+              return;
+              alert('Invalid entry')
+
+            }else{
+              document.getElementById("myForm").reset()
+              alert("Your message has been sent!")
+
+            }
+        };
+ 
         const currentTimeT = () => {
                 //Time Script
                 var time = new Date();
