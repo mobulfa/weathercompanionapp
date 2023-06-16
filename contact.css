@@ -158,13 +158,16 @@ background-color: #023c66!important ;
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  background-color: rgb(73, 223, 223);
+  
 }
 
 .container .contactInfo{
   width: 50%;
   display: flex;
   flex-direction: column;
+  background-color: rgb(73, 223, 223);
+  height: 100%;
+  padding-top: 2%;
 }
 
 .container .contactInfo .box{
