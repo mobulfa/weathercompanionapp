@@ -31,7 +31,7 @@ const currentTimeT = () => {
 // currentTimeT();
 setInterval(currentTimeT, 1000)
 
-const apiKey = "okLlT3An6ecfNwsEOtDpAHRJGQtJRb9Y";
+const apiKey = "v6LT9lxNCTQposmQHExhHxIxwkmYmUpX";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
 const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
 
