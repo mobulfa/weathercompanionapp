@@ -23,7 +23,7 @@
 
       <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img src="./images/img/logo.png" alt="logo"></a>
+          <a class="navbar-brand" href="index.html"><img src="images/img/Logo.png" alt="logo"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -97,11 +97,11 @@
                   <span>Email</span>
                 </div>
                 <div class="inputBox">
-                 <textarea required="required" name="message" id="messages"></textarea>
+                 <textarea required="required" name="message"></textarea>
                   <span>Message...</span>
                 </div>
                 <div class="inputBox">
-                  <button type="submit" class="btn-submit" name="submit" >Submit</button>
+                  <button type="submit" class="btn-submit" name="submit" onclick="validEmailNameMsg()">Submit</button>
                 </div>
 
                 <div class="checkbox">
@@ -128,39 +128,50 @@
 
       
       <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwHd7EKk-XHqDAqDjPFQ7eBVfPeRJ321J03dNUNNoXVg-CTbMlxzsV2JzXaK--mWiucrQ/exec'
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz8P9I40-e-WpdCQ6UIoaGEsOgWI92pOQBVGfGFxufllmXoultrHfFkeG-2eWtDh8V0eQ/exec'
         const form = document.forms['contact-us']
       
-
         form.addEventListener('submit', e => {
-  
-                e.preventDefault()
+          e.preventDefault()
+          const name = document.getElementById('name');
+          const formValue = form.elements.name.value
+          const nameTrim = formValue.trim();
+          const allLetters = /^[A-Za-z]+$/;
+          if(nameTrim.length !== 0 || nameTrim == nameTrim.match(allLetters)) {
 
-                const nameInput = document.getElementById('name');
-                const messageInput = document.getElementById('messages');
-                const emailInput = document.getElementById('email');
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
 
-                const nameTrimmed = nameInput.value.trim();
-                const messageTrimmed = messageInput.value.trim();
-                const emailTrimmed = emailInput.value.trim();
-  
-                if(nameTrimmed !== '' && messageTrimmed !== '' && emailTrimmed !== '' ) {
-                  //success sent
-                  const message =  document.getElementById('message');
-                  message.textContent = "Your message has been sent! Thank You";
-                  message.setAttribute('style', 'color:green; text-align: center;');
-                
-                 document.getElementById("myForm").reset();
-                } else {
-                 //failure
-                 const message =  document.getElementById('message');
-                 message.textContent = "Please check your details, some are not valid!";
-                  message.setAttribute('style', 'color:red; text-align: center;');
-                }
+        
+            // alert("Your message has been sent! Thank You");
+            const message =  document.getElementById('message');
+            message.textContent = "Your message has been sent! Thank You";
+            message.setAttribute('style', 'color:green; text-align: center;');
 
-                });
+            document.getElementById("myForm").reset();
+           
+            }
+            else {
+               const message =  document.getElementById('message');
+            message.textContent = "Please Review Your Input, Some Input are not Valid";
+            message.setAttribute('style', 'color:red; text-align: center;');
+            }
+          })
+          
 
 
+        const validEmailNameMsg = () => {
+            if (form.value.trim() === "") {
+              return;
+              alert('Invalid entry')
+
+            }else{
+              document.getElementById("myForm").reset()
+              alert("Your message has been sent!")
+
+            }
+        };
  
         const currentTimeT = () => {
                 //Time Script
