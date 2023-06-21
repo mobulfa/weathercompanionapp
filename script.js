@@ -31,9 +31,10 @@ const currentTimeT = () => {
 // currentTimeT();
 setInterval(currentTimeT, 1000)
 
-const apiKey = "v6LT9lxNCTQposmQHExhHxIxwkmYmUpX";
+const apiKey = "JE5JukFCIn9X9MUZQzHmbR7hVfAWp7gW";
 const apiUrl = "https://dataservice.accuweather.com/locations/v1/cities/search?q=";
 const apiUrlgeoPosition = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?q=";
+const googleMapSrc = "https://www.google.com/maps/embed/v1/search?q=Evacuation+Center+Philippines&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8";
 
 
 
@@ -68,6 +69,10 @@ const getCurrentLocation = async (data) => {
   const countryID = data.AdministrativeArea.CountryID;
   const locationKey = data.Key;
   localizedName.textContent = data.LocalizedName + ', '+ cityName + ', ' + countryID;
+
+  const iframeUpdate = document.querySelector('iframe');
+
+  iframeUpdate.setAttribute('src',`https://www.google.com/maps/embed/v1/search?q=Evacuation+Center+${cityName}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`);
 
   if(data.Key){
            
@@ -324,8 +329,15 @@ const checkCity = async (data) => {
             const countryCode = document.getElementById('countryCode');
             const countryID = current.AdministrativeArea.CountryID;
             localizedName.textContent = current.LocalizedName + ', '+ countryID;
-      
+            const cityName = current.LocalizedName;
+
             const locationKey = current.Key;
+
+            
+            const iframeUpdate = document.querySelector('iframe');
+
+           iframeUpdate.setAttribute('src',`https://www.google.com/maps/embed/v1/search?q=Evacuation+Center+${cityName}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`);
+
 
         if(current.Key){
            
