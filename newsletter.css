@@ -12,19 +12,16 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     margin:auto;
     
-
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background: url('./images/img/nlbg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
+    padding-top: 5px;
     border: 1px solid #888;
-    width: 60%; /* Could be more or less, depending on screen size */
-    height: 70%;
+    width: 40%; /* Could be more or less, depending on screen size */
+    height: 60%;
     
   }
   

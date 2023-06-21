@@ -13,7 +13,7 @@ body {
     grid-template-rows:1fr auto;
 
     /* background-attachment: fixed; */
-
+ 
 }
 .navbar-brand{
     color: #ffffff;
@@ -163,6 +163,30 @@ form {
     height: 770px;
     border: 1px solid orange;
 }
+
+#pnp{
+    font-weight: bolder;
+    font-size: larger;
+    text-decoration: underline;
+}
+
+#pcg{
+    font-weight: bolder;
+    font-size: larger;
+    text-decoration: underline;
+}
+
+#ndrrmc1{
+    font-weight: bolder;
+    font-size: larger;
+    text-decoration: underline;
+}
+#tips1{
+    font-weight: bolder;
+    font-size: larger;
+    text-decoration: underline;
+}
+
 #hotlines h4{
     text-align: center;
 }
