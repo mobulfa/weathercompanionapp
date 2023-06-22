@@ -25,7 +25,7 @@ const currentTimeT = () => {
                 h = h < 10 ? '0'+h : h;
                 m = m < 10 ? '0'+m : m;
                 s = s< 10 ? '0'+s : s;
-                currentTime1.textContent = h + ' ' + ':' + ' ' +m + ' ' + s + ' ' + ampm;
+                currentTime1.textContent = h + ':'  +m + ' ' + s + ' ' + ampm;
            
 }
 // currentTimeT();
@@ -716,6 +716,8 @@ const form2 = document.forms['newsLetter-footer'];
 
    message.textContent = "You have been added to our Newsletter, Cheers!";
    message.setAttribute('style', 'color:green; text-align: center;');
+
+   modal.style.display = "none";
   
         })
 
