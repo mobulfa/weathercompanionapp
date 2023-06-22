@@ -204,7 +204,7 @@ form {
     font-weight: 300;
 }
 #main-weather{
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: start;
     border: 1px solid orange;
@@ -229,11 +229,16 @@ font-size: 12px;
     font-size: 20px;
     font-weight: 500;
 }
+#mainweatherContent{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
 #currentWeather{
-    
+    /* border: 1px solid black; */
     font-weight: 300;
     /* padding: 10px; */
-    margin: 20px; 
+    margin-top: 5px; 
 
 }
 #currentWeather img{
@@ -250,7 +255,7 @@ font-size: 12px;
 }
 #currenDetails{
     /* border: 1px solid orange; */
-    margin-top: 20px;
+    margin-top: 30px;
     padding: 10px;
     
 }
@@ -275,7 +280,7 @@ justify-content: space-between;
 }
 #currentTemp{
     font-size: 70px;
-    justify-items: baseline;
+   
    margin-left: 20px;
 }
 #tipsOftheDayContainer{
@@ -488,13 +493,18 @@ div .footer {
 
 @media(max-width: 900px){
     #mainContent { display: flex; flex-direction: column; justify-content: center; align-items: center; }
-    #main-weather {     flex-wrap: wrap; }
-    /* #page-1
-    #page-2
-    #page-3
-    #tipsOftheDayContainer
-    #hotlines */
+    #main-weather {  display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    #hotlines {  display: flex; flex-direction: column; justify-content:center; height: 900px; }
+   
 }
+
+@media(max-width: 768px){
+    #mainContent { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    #main-weather {  display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    #hotlines {  display: flex; flex-direction: column; justify-content:center; height: 1000px; }
+}
+
+
 
 
 

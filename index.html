@@ -156,24 +156,34 @@
  
 
       <div class="" id="page-2">
-              <div class="container " id="main-weather">
 
-                <div class="container" id="currentWeather">
-                  <h5 style="font-weight: bold; font-size: 25px;">Current Weather</h5>
-                  <p id="currentTime">9:24 AM</p>
-                  <h3 id="localizedName">Digos, <span id="countryCode">PH</span></h3>
-                  <img src="images/clouds.png" alt="" id="wIcon">
-                  <span id="currentTemp">30</span><span>°C</span>
-                  <p>Status: <span id="status">Clear Sky</span></p>
+
+              <div class="container " id="main-weather">
+                <div class="container">
+                  <h5 style="font-weight: bold; font-size: 25px; text-align: center; margin-top: 10px;">Current Weather</h5>
+        
                 </div>
-              
-                <div class="container" id="currenDetails">
-                  <div>RealFeel Shade <span id="real">30°C</span></div>
+                <div class="container" id="mainweatherContent">
+                  <div class="container" id="currentWeather">
+                    <p id="currentTime">9:24 AM</p>
+                    <h3 id="localizedName">Digos, <span id="countryCode">PH</span></h3>
+                    <img src="images/clouds.png" alt="" id="wIcon">
+                   
+                      <span id="currentTemp">30</span><span>°C</span>
                   
-                  <div>Air Quality <span id="airQuality" >Good</span></div>
-                  <!-- <div>Wind <span>W 9 km/h</span></div>
-                  <div>Wind Gust <span>14 km/h</span></div> -->
-                </div>    
+                    
+                    <p>Status: <span id="status">Clear Sky</span></p>
+                  </div>
+                
+                  <div class="container" id="currenDetails">
+                    <div>RealFeel Shade <span id="real">30°C</span></div>
+                    
+                    <div>Air Quality <span id="airQuality" >Good</span></div>
+                    <!-- <div>Wind <span>W 9 km/h</span></div>
+                    <div>Wind Gust <span>14 km/h</span></div> -->
+                  </div>   
+                </div>
+                 
               </div>
               <div class="container" id="dayweather">
                 <div class="container" id="currentWeatherDay" style="padding:10px">
@@ -235,7 +245,13 @@
         
           <div id="page-3">
                 <div class="container" id="tipsOftheDayContainer">
-                  <div class="container" id="tipsOftheday">
+                  <div class="container" id="news">
+                    <h5 style="text-align: center; font-weight: bold; margin-top: 10px;">Want to Know more About Weather News?</h5>
+                    <p>Visit DOST PAG-ASA</p>
+                    <a href="https://www.youtube.com/@DOST_PAGASA" target="_blank">https://www.youtube.com/@DOST_PAGASA</a>
+                  </div>
+
+                  <div class="container" id="tipsOftheday" style=" margin-top:30px;">
                     <h5 style="text-align: center; font-weight: bold;"  id="tips1">Tips for the Day</h5>
                     <p id="tipsText">
                       When weather condition status is
@@ -248,7 +264,7 @@
                   </div>
                   
                   <div class="container">
-                    <h6 style="font-weight: bold;">Place of Evacuation Centers</h6>
+                    <h6 style=" font-size:20px; font-weight: bold; text-align: center; text-decoration: underline;">Place of Evacuation Centers</h6>
                     <!-- <div class="mapouter">
                       <div class="gmap_canvas">
                         <iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
