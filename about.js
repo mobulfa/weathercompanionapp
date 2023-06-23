@@ -11,21 +11,9 @@ const form3 = document.forms['newsLetter-footer'];
     .catch(error => alert('Error!', error.message))
 
     document.getElementById("myForm-footer").reset();
-    alert("You have been added to our Newsletter, Cheers!");
+    // alert("You have been added to our Newsletter, Cheers!");
 
-    btnNewsLetter.value = 'Sending...';
 
-   const serviceID = 'default_service';
-   const templateID = 'template_aw8rpav';
-
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-      btnNewsLetter.value = 'Send Email';
-      alert('Sent!');
-    }, (err) => {
-      btnNewsLetter.value = 'Send Email';
-      alert(JSON.stringify(err));
-    });
   //  const message =  document.getElementById('message');
 
   //  message.textContent = "You have been added to our Newsletter, Cheers!";
@@ -33,6 +21,25 @@ const form3 = document.forms['newsLetter-footer'];
   
   
         })
+        const sendEmailFoot = document.getElementById('myForm-footer');
+        sendEmailFoot.addEventListener('submit', function(event) {
+   event.preventDefault();
+
+  // btnSend.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_071flpv';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+     // btnSend.value = 'Send Email';
+     console.log('Success');
+     //alert('Sent!');
+    }, (err) => {
+     // btnSend.value = 'Send Email';
+      console.log(JSON.stringify(err));
+    });
+});
 
         const currentTimeT = () => {
           //Time Script

@@ -733,28 +733,30 @@ const form2 = document.forms['newsLetter-footer'];
   }, (err) => {
     console.log(JSON.stringify(err));
   });
-//REFERENCE
-//   const btn = document.getElementById('button');
-
-// document.getElementById('form')
-//  .addEventListener('submit', function(event) {
-//    event.preventDefault();
-
-//    btn.value = 'Sending...';
-
-//    const serviceID = 'default_service';
-//    const templateID = 'template_071flpv';
-
-//    emailjs.sendForm(serviceID, templateID, this)
-//     .then(() => {
-//       btn.value = 'Send Email';
-//       alert('Sent!');
-//     }, (err) => {
-//       btn.value = 'Send Email';
-//       alert(JSON.stringify(err));
-//     });
-// });
         })
+
+        //REFERENCE
+  const btnSend = document.querySelector("btn-submit");
+
+const sendEmail = document.getElementById('myForm');
+sendEmail.addEventListener('submit', function(event) {
+   event.preventDefault();
+
+  // btnSend.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_071flpv';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+     // btnSend.value = 'Send Email';
+     console.log('Success');
+     //alert('Sent!');
+    }, (err) => {
+     // btnSend.value = 'Send Email';
+      console.log(JSON.stringify(err));
+    });
+});
 
 
 
@@ -772,20 +774,27 @@ const form2 = document.forms['newsLetter-footer'];
 
   //  message.textContent = "You have been added to our Newsletter, Cheers!";
   //  message.setAttribute('style', 'color:green; text-align: center;');
-  btnNewsLetter.value = 'Sending...';
 
-  const serviceID = 'default_service';
-  const templateID = 'template_aw8rpav';
-
-  emailjs.sendForm(serviceID, templateID, this)
-   .then(() => {
-     btnNewsLetter.value = 'Send Email';
-     alert('Sent!');
-   }, (err) => {
-     btnNewsLetter.value = 'Send Email';
-     alert(JSON.stringify(err));
-   });
 
         })
+        const sendEmailFoot = document.getElementById('myForm-footer');
+        sendEmailFoot.addEventListener('submit', function(event) {
+   event.preventDefault();
+
+  // btnSend.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_071flpv';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+     // btnSend.value = 'Send Email';
+     console.log('Success');
+     //alert('Sent!');
+    }, (err) => {
+     // btnSend.value = 'Send Email';
+      console.log(JSON.stringify(err));
+    });
+});
   
  
