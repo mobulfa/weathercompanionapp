@@ -99,38 +99,48 @@ body {
 	
 }
 .about-text p:nth-child(1){
-    font-family: myriad pro;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
-    color: #000000;
+    color: #333131;
     font-size: 43px;
     line-height: 0px;  
     padding-top: 50px;
+	padding-bottom: 1%;
 	text-align: center;
+
 }
 .about-text p:nth-child(2){
     color: #ffffff;
     font-size: 23px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: bold;
     padding-top: 20px;
+	padding-bottom: 1%;
     line-height: 5px;
 	text-align: center;
 }
 .about-text p:nth-child(3),
 .about-text p:nth-child(4){
-    color: #000000;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 16px;
+    color: #2b2929;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 	text-align: justify;
 
 }
+
+#paragraph1{
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: rgba(255,248,248,0.297);
+}
+
+
 .about-text button{
     width: 120px;
     height: 40px;
     color: #ffffff;
     outline: none;
     border: none;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #262525;
 }
 
