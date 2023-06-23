@@ -714,35 +714,49 @@ const form2 = document.forms['newsLetter-footer'];
  form3.addEventListener('submit', e => {
   e.preventDefault()
 
+  const message =  document.getElementById('message');
+
   fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
   .then(response => console.log('Success!', response))
   .catch(error => console.error('Error!', error.message))
+ 
+  // document.getElementById("myForm").reset();
+  // message.textContent = "You have been added to our Newsletter, Cheers!";
+  // message.setAttribute('style', 'color:green; text-align: center;');
+  // modal.style.display = "none";
 
-  document.getElementById("myForm").reset();
-  // alert("You have been added to our Newsletter, Cheers!");
-
- const message =  document.getElementById('message');
-
-
-
- const serviceID = 'default_service';
- const templateID = 'template_071flpv';
-
- emailjs.sendForm(serviceID, templateID, this)
+  const serviceID = 'default_service';
+  const templateID = 'template_071flpv';
+  emailjs.sendForm(serviceID, templateID, this)
   .then(() => {
-    //btn.value = 'Send Email';
     console.log('Sent!');
   }, (err) => {
-    //btn.value = 'Send Email';
     console.log(JSON.stringify(err));
   });
-  
+//REFERENCE
+//   const btn = document.getElementById('button');
 
-  message.textContent = "You have been added to our Newsletter, Cheers!";
-  message.setAttribute('style', 'color:green; text-align: center;');
-  modal.style.display = "none";
-  
+// document.getElementById('form')
+//  .addEventListener('submit', function(event) {
+//    event.preventDefault();
+
+//    btn.value = 'Sending...';
+
+//    const serviceID = 'default_service';
+//    const templateID = 'template_071flpv';
+
+//    emailjs.sendForm(serviceID, templateID, this)
+//     .then(() => {
+//       btn.value = 'Send Email';
+//       alert('Sent!');
+//     }, (err) => {
+//       btn.value = 'Send Email';
+//       alert(JSON.stringify(err));
+//     });
+// });
         })
+
+
 
   form2.addEventListener('submit', e => {
   e.preventDefault()
