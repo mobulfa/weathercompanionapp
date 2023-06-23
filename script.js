@@ -1,4 +1,4 @@
-const btnNewsLetter = document.getElementById('button');
+
 
 // document.getElementById('form')
 //  .addEventListener('submit', function(event) {
@@ -710,37 +710,35 @@ const form2 = document.forms['newsLetter-footer'];
  }
  
 
-
+ const btnNewsLetter = document.getElementById('button');
  form3.addEventListener('submit', e => {
   e.preventDefault()
 
-  
   fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
-    .then(response => console.log('Success!', response))
-    .catch(error => console.error('Error!', error.message))
+  .then(response => console.log('Success!', response))
+  .catch(error => console.error('Error!', error.message))
 
-    document.getElementById("myForm").reset();
-    // alert("You have been added to our Newsletter, Cheers!");
+  document.getElementById("myForm").reset();
+  // alert("You have been added to our Newsletter, Cheers!");
 
-   const message =  document.getElementById('message');
+ const message =  document.getElementById('message');
 
-   message.textContent = "You have been added to our Newsletter, Cheers!";
-   message.setAttribute('style', 'color:green; text-align: center;');
-   btnNewsLetter.value = 'Sending...';
+ message.textContent = "You have been added to our Newsletter, Cheers!";
+ message.setAttribute('style', 'color:green; text-align: center;');
+  const serviceID = 'default_service';
+  const templateID = 'template_aw8rpav';
+  emailjs.sendForm(serviceID, templateID, this)
+  .then(() => {
+    btnNewsLetter.value = 'Send Email';
+    alert('Sent!');
+  }, (err) => {
+    btnNewsLetter.value = 'Send Email';
+    alert(JSON.stringify(err));
+  });
+  
 
-   const serviceID = 'default_service';
-   const templateID = 'template_aw8rpav';
 
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-      btnNewsLetter.value = 'Send Email';
-      alert('Sent!');
-    }, (err) => {
-      btnNewsLetter.value = 'Send Email';
-      alert(JSON.stringify(err));
-    });
-    
-   modal.style.display = "none";
+ modal.style.display = "none";
   
         })
 
@@ -753,12 +751,24 @@ const form2 = document.forms['newsLetter-footer'];
     .catch(error => console.log('Error!', error.message))
 
     document.getElementById("myForm-footer").reset();
-    alert("You have been added to our Newsletter, Cheers!");
+    // alert("You have been added to our Newsletter, Cheers!");
   //  const message =  document.getElementById('message');
 
   //  message.textContent = "You have been added to our Newsletter, Cheers!";
   //  message.setAttribute('style', 'color:green; text-align: center;');
- 
+  btnNewsLetter.value = 'Sending...';
+
+  const serviceID = 'default_service';
+  const templateID = 'template_aw8rpav';
+
+  emailjs.sendForm(serviceID, templateID, this)
+   .then(() => {
+     btnNewsLetter.value = 'Send Email';
+     alert('Sent!');
+   }, (err) => {
+     btnNewsLetter.value = 'Send Email';
+     alert(JSON.stringify(err));
+   });
 
         })
   

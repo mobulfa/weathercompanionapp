@@ -43,6 +43,20 @@ form.addEventListener('submit', e => {
 
    message.textContent = "You have been added to our Newsletter, Cheers!";
    message.setAttribute('style', 'color:green; text-align: center;');
+
+   btnNewsLetter.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_aw8rpav';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btnNewsLetter.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btnNewsLetter.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
   
         })
 
@@ -55,7 +69,21 @@ form.addEventListener('submit', e => {
     .catch(error => console.log('Error!', error.message))
 
     document.getElementById("myForm-footer").reset();
-    alert("You have been added to our Newsletter, Cheers!");
+
+    btnNewsLetter.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_aw8rpav';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btnNewsLetter.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btnNewsLetter.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+    // alert("You have been added to our Newsletter, Cheers!");
   //  const message =  document.getElementById('message');
 
   //  message.textContent = "You have been added to our Newsletter, Cheers!";

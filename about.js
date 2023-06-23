@@ -12,6 +12,20 @@ const form3 = document.forms['newsLetter-footer'];
 
     document.getElementById("myForm-footer").reset();
     alert("You have been added to our Newsletter, Cheers!");
+
+    btnNewsLetter.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_aw8rpav';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btnNewsLetter.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btnNewsLetter.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
   //  const message =  document.getElementById('message');
 
   //  message.textContent = "You have been added to our Newsletter, Cheers!";
