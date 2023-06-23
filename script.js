@@ -709,92 +709,108 @@ const form2 = document.forms['newsLetter-footer'];
  }
  }
  
-
- const btnNewsLetter = document.getElementById('button');
- form3.addEventListener('submit', e => {
-  e.preventDefault()
-
-  const message =  document.getElementById('message');
-
-  fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
-  .then(response => console.log('Success!', response))
-  .catch(error => console.error('Error!', error.message))
+ const sendEmail = document.getElementById('myForm');
+ sendEmail.addEventListener('submit', function(event) {
+    event.preventDefault();
  
-  // document.getElementById("myForm").reset();
-  // message.textContent = "You have been added to our Newsletter, Cheers!";
-  // message.setAttribute('style', 'color:green; text-align: center;');
-  // modal.style.display = "none";
+    const serviceID = 'default_service';
+    const templateID = 'template_071flpv';
+ 
+    emailjs.sendForm(serviceID, templateID, this)
+     .then(() => {
+      fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+     
+      console.log('Send Success');
+      document.getElementById("myForm").reset();
+    
+     }, (err) => {
+     
+       console.log(JSON.stringify(err));
+     });
+ });
 
-  const serviceID = 'default_service';
-  const templateID = 'template_071flpv';
-  emailjs.sendForm(serviceID, templateID, this)
-  .then(() => {
-    console.log('Sent!');
-  }, (err) => {
-    console.log(JSON.stringify(err));
-  });
-        })
+//  form3.addEventListener('submit', e => {
+//   e.preventDefault()
+
+//   const message =  document.getElementById('message');
+
+//   fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
+//   .then(response => console.log('Success!', response))
+//   .catch(error => console.error('Error!', error.message))
+ 
+  
+//   message.textContent = "You have been added to our Newsletter, Cheers!";
+//   message.setAttribute('style', 'color:green; text-align: center;');
+//   modal.style.display = "none";
+
+
+//         })
 
         //REFERENCE
-  const btnSend = document.querySelector("btn-submit");
-
-const sendEmail = document.getElementById('myForm');
-sendEmail.addEventListener('submit', function(event) {
-   event.preventDefault();
-
-  // btnSend.value = 'Sending...';
-
-   const serviceID = 'default_service';
-   const templateID = 'template_071flpv';
-
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-     // btnSend.value = 'Send Email';
-     console.log('Success');
-     //alert('Sent!');
-    }, (err) => {
-     // btnSend.value = 'Send Email';
-      console.log(JSON.stringify(err));
-    });
-});
 
 
 
-  form2.addEventListener('submit', e => {
-  e.preventDefault()
-  const email = document.getElementById('email');
+        const sendEmailFooter = document.getElementById('myForm-footer');
+        sendEmailFooter.addEventListener('submit', function(event) {
+           event.preventDefault();
+        
+           const serviceID = 'default_service';
+           const templateID = 'template_071flpv';
+        
+           emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+              
+             fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
+             .then(response => console.log('Success!', response))
+             .catch(error => console.error('Error!', error.message))
+            
+             console.log('Send Success');
+             document.getElementById("myForm").reset();
+           
+            }, (err) => {
+            
+              console.log(JSON.stringify(err));
+            });
+        });
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form2)})
-    .then(response => console.log('Success!', response))
-    .catch(error => console.log('Error!', error.message))
 
-    document.getElementById("myForm-footer").reset();
-    // alert("You have been added to our Newsletter, Cheers!");
-  //  const message =  document.getElementById('message');
+//   form2.addEventListener('submit', e => {
+//   e.preventDefault()
+//   const email = document.getElementById('email');
 
-  //  message.textContent = "You have been added to our Newsletter, Cheers!";
-  //  message.setAttribute('style', 'color:green; text-align: center;');
+//     fetch(scriptURL, { method: 'POST', body: new FormData(form2)})
+//     .then(response => console.log('Success!', response))
+//     .catch(error => console.log('Error!', error.message))
+
+//     document.getElementById("myForm-footer").reset();
+//     // alert("You have been added to our Newsletter, Cheers!");
+//   //  const message =  document.getElementById('message');
+
+//   //  message.textContent = "You have been added to our Newsletter, Cheers!";
+//   //  message.setAttribute('style', 'color:green; text-align: center;');
 
 
-        })
-        const sendEmailFoot = document.getElementById('myForm-footer');
-        sendEmailFoot.addEventListener('submit', function(event) {
-   event.preventDefault();
+//         })
+//         const sendEmailFoot = document.getElementById('myForm-footer');
+//         sendEmailFoot.addEventListener('submit', function(event) {
+//    event.preventDefault();
 
-  // btnSend.value = 'Sending...';
+//   // btnSend.value = 'Sending...';
 
-   const serviceID = 'default_service';
-   const templateID = 'template_071flpv';
+//    const serviceID = 'default_service';
+//    const templateID = 'template_071flpv';
 
-   emailjs.sendForm(serviceID, templateID, this)
-    .then(() => {
-     // btnSend.value = 'Send Email';
-     console.log('Success');
-     //alert('Sent!');
-    }, (err) => {
-     // btnSend.value = 'Send Email';
-      console.log(JSON.stringify(err));
-    });
-});
+//    emailjs.sendForm(serviceID, templateID, this)
+//     .then(() => {
+//      // btnSend.value = 'Send Email';
+//      console.log('Success');
+//      //alert('Sent!');
+//     }, (err) => {
+//      // btnSend.value = 'Send Email';
+//       console.log(JSON.stringify(err));
+//     });
+// });
   
  
