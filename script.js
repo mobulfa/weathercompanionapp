@@ -723,22 +723,24 @@ const form2 = document.forms['newsLetter-footer'];
 
  const message =  document.getElementById('message');
 
- message.textContent = "You have been added to our Newsletter, Cheers!";
- message.setAttribute('style', 'color:green; text-align: center;');
-  const serviceID = 'default_service';
-  const templateID = 'template_aw8rpav';
-  emailjs.sendForm(serviceID, templateID, this)
+
+
+ const serviceID = 'default_service';
+ const templateID = 'template_071flpv';
+
+ emailjs.sendForm(serviceID, templateID, this)
   .then(() => {
-    btnNewsLetter.value = 'Send Email';
-    alert('Sent!');
+    //btn.value = 'Send Email';
+    console.log('Sent!');
   }, (err) => {
-    btnNewsLetter.value = 'Send Email';
-    alert(JSON.stringify(err));
+    //btn.value = 'Send Email';
+    console.log(JSON.stringify(err));
   });
   
 
-
- modal.style.display = "none";
+  message.textContent = "You have been added to our Newsletter, Cheers!";
+  message.setAttribute('style', 'color:green; text-align: center;');
+  modal.style.display = "none";
   
         })
 
