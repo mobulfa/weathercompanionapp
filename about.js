@@ -55,8 +55,8 @@ sendEmailFooter.addEventListener('submit', function(event) {
      .catch(error => console.error('Error!', error.message))
     
      console.log('Send Success');
-     document.getElementById("myForm").reset();
-   
+     document.getElementById('myForm-footer').reset();
+     modal.style.display = "none";
     }, (err) => {
     
       console.log(JSON.stringify(err));

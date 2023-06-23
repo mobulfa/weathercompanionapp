@@ -723,7 +723,8 @@ const form2 = document.forms['newsLetter-footer'];
       .catch(error => console.error('Error!', error.message))
      
       console.log('Send Success');
-      document.getElementById("myForm").reset();
+      document.getElementById('myForm').reset();
+      modal.style.display = "none";
     
      }, (err) => {
      
@@ -761,13 +762,14 @@ const form2 = document.forms['newsLetter-footer'];
         
            emailjs.sendForm(serviceID, templateID, this)
             .then(() => {
-              
+
              fetch(scriptURL, { method: 'POST', body: new FormData(form3)})
              .then(response => console.log('Success!', response))
              .catch(error => console.error('Error!', error.message))
             
              console.log('Send Success');
-             document.getElementById("myForm").reset();
+             document.getElementById('myForm-footer').reset();
+             modal.style.display = "none";
            
             }, (err) => {
             
