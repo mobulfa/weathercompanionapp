@@ -1,3 +1,13 @@
+const btnNewsLetter = document.getElementById('button');
+
+// document.getElementById('form')
+//  .addEventListener('submit', function(event) {
+//    event.preventDefault();
+
+   
+// });
+
+
 const currentTimeT = () => {
                 //Time Script
                 var time = new Date();
@@ -716,7 +726,20 @@ const form2 = document.forms['newsLetter-footer'];
 
    message.textContent = "You have been added to our Newsletter, Cheers!";
    message.setAttribute('style', 'color:green; text-align: center;');
+   btnNewsLetter.value = 'Sending...';
 
+   const serviceID = 'default_service';
+   const templateID = 'template_aw8rpav';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btnNewsLetter.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btnNewsLetter.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+    
    modal.style.display = "none";
   
         })
